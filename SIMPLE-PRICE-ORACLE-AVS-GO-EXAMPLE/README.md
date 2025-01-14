@@ -61,8 +61,8 @@ Validation Service logic:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Othentic-Labs/simple-price-oracle-avs-go-example.git
-   cd simple-price-oracle-avs-go-example
+   git clone git clone https://github.com/Othentic-Labs/examples.git
+   cd examples/SIMPLE-PRICE-ORACLE-AVS-GO-EXAMPLE
    ```
 
 2. Install Othentic CLI:
