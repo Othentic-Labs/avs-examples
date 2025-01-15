@@ -2,13 +2,15 @@ package services
 
 import (
 	"Execution_Service/config"
+	"math/big"
 	"encoding/hex"
+	"crypto/ecdsa"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 	"log"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/ethereum/go-ethereum/rpc"
 )
 
@@ -26,52 +28,47 @@ type Params struct {
 
 func SendTask(proofOfTask string, data string, taskDefinitionId int) {
 	// Logic to send tasks to the Ethereum network
-	privateKey := config.PrivateKey
-	wallet, err := crypto.HexToECDSA(privateKey)
+	privateKey, err := crypto.HexToECDSA(config.PrivateKey)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
+	publicKey, ok := privateKey.Public().(*ecdsa.PublicKey)
+	if !ok {
+		log.Println("cannot assert type: publicKey is not of type *ecdsa.PublicKey")
+	}
+	performerAddress := crypto.PubkeyToAddress(*publicKey).Hex()
 
-	performerAddress := crypto.PubkeyToAddress(wallet.PublicKey).Hex()
-
-	typeString, err := abi.NewType("string", "", nil)
-	typeBytes, err := abi.NewType("bytes", "", nil)
-	typeAddress, err := abi.NewType("address", "", nil)
-	typeUint16, err := abi.NewType("uint16", "", nil)
-
-	log.Println("values", proofOfTask, []byte(data), uint16(taskDefinitionId))
 	arguments := abi.Arguments{
-		{Type: typeString},
-		{Type: typeBytes},
-		{Type: typeAddress},
-		{Type: typeUint16},
+		{Type: abi.Type{T: abi.StringTy}},
+		{Type: abi.Type{T: abi.BytesTy}},
+		{Type: abi.Type{T: abi.AddressTy}},
+		{Type: abi.Type{T: abi.UintTy}},
 	}
-	dataBytes := []byte(data)
 
-	dataPacked, err := arguments.Pack(proofOfTask, dataBytes, common.HexToAddress(performerAddress), uint16(taskDefinitionId))
+	dataPacked, err := arguments.Pack(
+		proofOfTask,
+		[]byte(data),
+		common.HexToAddress(performerAddress),
+		big.NewInt(int64(taskDefinitionId)),
+	)
 	if err != nil {
 		log.Println("error occured while encoding")
-		log.Fatal(err)
+		log.Println(err)
 	}
-
 	messageHash := crypto.Keccak256Hash(dataPacked)
 
-	sig, err := crypto.Sign(messageHash.Bytes(), wallet)
+	sig, err := crypto.Sign(messageHash.Bytes(), privateKey)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("error occured while signing")
+		log.Println(err)
 	}
-	serializedSignature, err := rlp.EncodeToBytes(sig)
-	serializedSignatureHex := "0x" + hex.EncodeToString(serializedSignature)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
+	sig[64] += 27
+	serializedSignature := hexutil.Encode(sig)
 	log.Println(serializedSignature)
 
 	client, err := rpc.Dial(config.OTHENTIC_CLIENT_RPC_ADDRESS)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 
 	params := Params{
@@ -79,7 +76,7 @@ func SendTask(proofOfTask string, data string, taskDefinitionId int) {
 		data:             "0x" + hex.EncodeToString([]byte(data)),
 		taskDefinitionId: taskDefinitionId,
 		performerAddress: performerAddress,
-		signature:        serializedSignatureHex,
+		signature:        serializedSignature,
 	}
 
 	response := makeRPCRequest(client, params)
@@ -87,12 +84,11 @@ func SendTask(proofOfTask string, data string, taskDefinitionId int) {
 }
 
 func makeRPCRequest(client *rpc.Client, params Params) interface{} {
-	// Example of sending an RPC request (you need to implement the request sending logic)
 	var result interface{}
 
 	err := client.Call(&result, "sendTask", params.proofOfTask, params.data, params.taskDefinitionId, params.performerAddress, params.signature)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	return result
 }

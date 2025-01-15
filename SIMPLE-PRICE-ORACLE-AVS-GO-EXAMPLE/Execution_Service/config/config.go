@@ -4,6 +4,7 @@ import (
 	"os"
 	"log"
 	"github.com/joho/godotenv"
+	"github.com/gin-gonic/gin"
 )
 
 var (
@@ -27,4 +28,6 @@ func Init() {
 	if PinataApiKey == "" || PinataSecretApiKey == "" || OTHENTIC_CLIENT_RPC_ADDRESS == "" || PrivateKey == "" {
 		log.Fatal("Environment variables are not set properly")
 	}
+
+	gin.SetMode(gin.ReleaseMode)
 }
