@@ -1,4 +1,4 @@
-## Simple Price Oracle AVS GO Example
+## Simple Price Oracle AVS Go Example
 
 This repository demonstrates how to implement a simple price oracle AVS in Go using the Othentic Stack.
 
@@ -62,7 +62,7 @@ Validation Service logic:
 
    ```bash
    git clone git clone https://github.com/Othentic-Labs/avs-examples.git
-   cd avs-examples/SIMPLE-PRICE-ORACLE-AVS-GO-EXAMPLE
+   cd avs-examples/simple-price-oracle-avs-go-example
    ```
 
 2. Install Othentic CLI:
