@@ -1,11 +1,14 @@
 use web3::transports::Http;
-use web3::types::{Address, U256};
 use web3::Web3;
-use ethabi::{encode, Token};
 use secp256k1::{SecretKey, Message, Secp256k1};
 use std::str::FromStr;
 use serde::{Deserialize, Serialize};
 use std::error::Error;
+use ethers::signers::{LocalWallet, Signer};
+use ethers::types::{Address, U256};
+use ethers::abi::{AbiEncode, Token};
+use ethers::utils::keccak256;
+
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Params {
@@ -35,7 +38,7 @@ impl Config {
 static mut CONFIG: Option<Config> = None;
 
 // Set up global Config (can be called once at initialization)
-fn init_config(private_key: String, eth_rpc_url: String) {
+pub fn init_config(private_key: String, eth_rpc_url: String) {
     unsafe {
         CONFIG = Some(Config::new(private_key, eth_rpc_url));
     }
@@ -51,30 +54,20 @@ pub async fn send_task(proof_of_task: String, data: String, task_definition_id: 
     let http = Http::new(&config.eth_rpc_url)?;
     let web3 = Web3::new(http);
 
-    // Convert private key to ECDSA secret key
-    let secp = Secp256k1::new();
-    let secret_key = SecretKey::from_str(&config.private_key)?;
+    let wallet: LocalWallet = config.private_key.parse()?;
     
-    // Get the public key and the corresponding Ethereum address
-    let public_key = secp256k1::key::PublicKey::from_secret_key(&secp, &secret_key);
-    // let performer_address = Address::from(public_key);
-    let performer_address = "sdsds";
+    // Get the Ethereum address
+    let performer_address: Address = wallet.address();
+    println!("Ethereum Address: {:?}", performer_address);
+    let data_string = data.to_string();
 
     // Prepare the data using ABI encoding
-    // let encoded_data = encode(&[
-    //     Token::String(proof_of_task),
-    //     Token::Bytes(data.as_bytes().to_vec()),
-    //     Token::Address(performer_address),
-    //     Token::Uint(U256::from(task_definition_id)),
-    // ]);
+    let encoded_data = (proof_of_task.to_string(), data_string.into_bytes(), performer_address, U256::from(task_definition_id))
+        .encode();
 
-    // Hash the encoded data (Keccak256)
-    // let message = Message::from_slice(&web3::ethabi::encode(&encoded_data))?;
-    // let signature = secp.sign(&message, &secret_key);
-
-    // // Serialize the signature
-    // let serialized_signature = format!("0x{}", hex::encode(&signature.serialize()));
-    let serialized_signature = "0xcs".to_string();
+    let message_hash = keccak256(&encoded_data);
+    let signature = wallet.sign_message(message_hash).await?;
+    let serialized_signature = format!("0x{}", hex::encode(signature.to_vec()));
 
     // Prepare the Params structure with necessary values
     let params = Params {
