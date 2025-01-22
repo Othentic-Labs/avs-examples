@@ -1,6 +1,6 @@
-## Simple Price Oracle AVS Go Example
+## Simple Price Oracle AVS Rust Example
 
-This repository demonstrates how to implement a simple price oracle AVS in Go using the Othentic Stack.
+This repository demonstrates how to implement a simple price oracle AVS in Rust using the Othentic Stack.
 
 ---
 
@@ -52,7 +52,7 @@ Validation Service logic:
 
 ## Prerequisites
 
-- Go (v 1.23 )
+- Rust (v 1.23 )
 - Foundry
 - [Docker](https://docs.docker.com/engine/install/)
 
@@ -62,7 +62,7 @@ Validation Service logic:
 
    ```bash
    git clone git clone https://github.com/Othentic-Labs/avs-examples.git
-   cd avs-examples/simple-price-oracle-avs-go-example
+   cd avs-examples/simple-price-oracle-avs-rust-example
    ```
 
 2. Install Othentic CLI:

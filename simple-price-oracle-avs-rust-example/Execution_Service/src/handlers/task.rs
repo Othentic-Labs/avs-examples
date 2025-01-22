@@ -28,7 +28,7 @@ pub async fn execute_task(payload: web::Json<ExecuteTaskPayload>) -> impl Respon
             let data = "hello"; // placeholder data
 
             // Send the task
-            dal_service::send_task(proof_of_task.clone(), data.to_string(), task_definition_id).await?;;
+            dal_service::send_task(proof_of_task.clone(), data.to_string(), task_definition_id).await;
 
             // Prepare the response data
             let mut response_data = HashMap::new();
@@ -47,9 +47,8 @@ pub async fn execute_task(payload: web::Json<ExecuteTaskPayload>) -> impl Respon
         Err(err) => {
             // Error fetching price
             eprintln!("Error fetching price: {}", err);
-            HttpResponse::InternalServerError().json(serde_json::json!({
-                "error": "Failed to fetch price"
-            }))
+            HttpResponse::ServiceUnavailable().json("Network error occurred")
+            
         }
     }
 }

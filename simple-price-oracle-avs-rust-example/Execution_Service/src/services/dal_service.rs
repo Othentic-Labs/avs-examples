@@ -6,7 +6,6 @@ use secp256k1::{SecretKey, Message, Secp256k1};
 use std::str::FromStr;
 use serde::{Deserialize, Serialize};
 use std::error::Error;
-use tokio;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Params {
@@ -42,7 +41,7 @@ fn init_config(private_key: String, eth_rpc_url: String) {
     }
 }
 
-async fn send_task(proof_of_task: String, data: String, task_definition_id: i32) -> Result<(), Box<dyn Error>> {
+pub async fn send_task(proof_of_task: String, data: String, task_definition_id: i32) -> Result<(), Box<dyn Error>> {
     // Access global Config
     let config = unsafe {
         CONFIG.as_ref().expect("Config is not initialized")
@@ -58,22 +57,24 @@ async fn send_task(proof_of_task: String, data: String, task_definition_id: i32)
     
     // Get the public key and the corresponding Ethereum address
     let public_key = secp256k1::key::PublicKey::from_secret_key(&secp, &secret_key);
-    let performer_address = Address::from(public_key);
+    // let performer_address = Address::from(public_key);
+    let performer_address = "sdsds";
 
     // Prepare the data using ABI encoding
-    let encoded_data = encode(&[
-        Token::String(proof_of_task),
-        Token::Bytes(data.as_bytes().to_vec()),
-        Token::Address(performer_address),
-        Token::Uint(U256::from(task_definition_id)),
-    ]);
+    // let encoded_data = encode(&[
+    //     Token::String(proof_of_task),
+    //     Token::Bytes(data.as_bytes().to_vec()),
+    //     Token::Address(performer_address),
+    //     Token::Uint(U256::from(task_definition_id)),
+    // ]);
 
     // Hash the encoded data (Keccak256)
-    let message = Message::from_slice(&web3::ethabi::encode(&encoded_data))?;
-    let signature = secp.sign(&message, &secret_key);
+    // let message = Message::from_slice(&web3::ethabi::encode(&encoded_data))?;
+    // let signature = secp.sign(&message, &secret_key);
 
-    // Serialize the signature
-    let serialized_signature = format!("0x{}", hex::encode(&signature.serialize()));
+    // // Serialize the signature
+    // let serialized_signature = format!("0x{}", hex::encode(&signature.serialize()));
+    let serialized_signature = "0xcs".to_string();
 
     // Prepare the Params structure with necessary values
     let params = Params {
