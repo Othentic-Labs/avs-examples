@@ -1,7 +1,9 @@
-const express = require("express");
-require("dotenv").config();
-const getSouthernBelleAnswer = require("./utils/openai");
-const { ReclaimProofRequest } = require('@reclaimprotocol/js-sdk')
+import express from "express";
+import dotenv from "dotenv";
+import getSouthernBelleAnswer from "./utils/openai.js"; // Add the .js extension for local imports in ES Modules
+
+// const { ReclaimProofRequest } = require('@reclaimprotocol/js-sdk')
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
