@@ -80,6 +80,11 @@ If you already have all the information required to run the AVS, simply copy the
 docker-compose up --build
 ```
 
+Trigger task execution with following command
+```bash
+curl -X POST http://localhost:4003/task/execute -H "Content-Type: application/json" -d "{}"
+```
+
 ### Next
 Modify the different configurations, tailor the task execution logic as per your use case, and run the AVS.
 
