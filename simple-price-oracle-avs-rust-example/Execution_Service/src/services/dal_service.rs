@@ -1,14 +1,11 @@
-use web3::transports::Http;
-use web3::Web3;
-use secp256k1::{SecretKey, Message, Secp256k1};
-use std::str::FromStr;
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use ethers::signers::{LocalWallet, Signer};
 use ethers::types::{Address, U256};
-use ethers::abi::{AbiEncode, Token};
+use ethers::abi::AbiEncode;
 use ethers::utils::keccak256;
-
+use reqwest::Client;
+use serde_json::json;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Params {
@@ -17,6 +14,20 @@ struct Params {
     task_definition_id: i32,
     performer_address: String,
     signature: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct JsonRpcResponse {
+    jsonrpc: String,
+    result: Option<serde_json::Value>,
+    error: Option<JsonRpcError>,
+    id: u64,
+}
+
+#[derive(Debug, Deserialize)]
+struct JsonRpcError {
+    code: i64,
+    message: String,
 }
 
 #[derive(Debug)]
@@ -50,23 +61,19 @@ pub async fn send_task(proof_of_task: String, data: String, task_definition_id: 
         CONFIG.as_ref().expect("Config is not initialized")
     };
 
-    // Create a web3 instance
-    let http = Http::new(&config.eth_rpc_url)?;
-    let web3 = Web3::new(http);
-
     let wallet: LocalWallet = config.private_key.parse()?;
     
     // Get the Ethereum address
     let performer_address: Address = wallet.address();
     println!("Ethereum Address: {:?}", performer_address);
-    let data_string = data.to_string();
-
+    
     // Prepare the data using ABI encoding
-    let encoded_data = (proof_of_task.to_string(), data_string.into_bytes(), performer_address, U256::from(task_definition_id))
+    let encoded_data = (proof_of_task.clone(), data.clone().into_bytes(), performer_address, U256::from(task_definition_id))
         .encode();
 
     let message_hash = keccak256(&encoded_data);
     let signature = wallet.sign_message(message_hash).await?;
+    
     let serialized_signature = format!("0x{}", hex::encode(signature.to_vec()));
 
     // Prepare the Params structure with necessary values
@@ -79,30 +86,44 @@ pub async fn send_task(proof_of_task: String, data: String, task_definition_id: 
     };
 
     // Call the RPC method (sendTask)
-    let result = make_rpc_request(&web3, params).await;
+    make_rpc_request(&config.eth_rpc_url, params).await?;
     
-    match result {
-        Ok(response) => {
-            println!("Task sent successfully: {:?}", response);
-        },
-        Err(err) => {
-            eprintln!("Error sending task: {}", err);
-        },
-    }
-
-    Ok(())
+    Ok(()) 
 }
 
-// Placeholder function for sending the RPC request (e.g., interacting with smart contract)
-async fn make_rpc_request(web3: &Web3<Http>, params: Params) -> Result<String, Box<dyn Error>> {
-    // This would typically involve calling the contract method on Ethereum.
-    // For now, we simulate sending the task:
+// Function for sending the RPC request
+async fn make_rpc_request(rpc_url: &String, params: Params) -> Result<String, Box<dyn Error>> {
+    let client = Client::new();
     
     println!("Sending task with params: {:?}", params);
 
-    // In practice, you'd send a transaction with:
-    // web3.eth().send_transaction(...).await?;
+    let body = json!({
+        "jsonrpc": "2.0",
+        "method": "sendTask",
+        "params": [
+            params.proof_of_task,
+            params.data,
+            params.task_definition_id,
+            params.performer_address,
+            params.signature
+        ],
+        "id": 1
+    });
 
-    Ok("Task executed successfully".to_string()) // Placeholder success response
+    let response = client.post(rpc_url)
+        .json(&body)
+        .send()
+        .await?;
+
+    // Deserialize the response
+    let rpc_response: JsonRpcResponse = response.json().await?;
+
+    // Handle the response
+    if let Some(result) = rpc_response.result {
+        Ok(format!("Task executed successfully with result {:?}", result)) 
+    } else if let Some(error) = rpc_response.error {
+        Err(format!("RPC Error {}: {}", error.code, error.message).into())
+    } else {
+        Err("Unknown RPC response".into())
+    }
 }
-
