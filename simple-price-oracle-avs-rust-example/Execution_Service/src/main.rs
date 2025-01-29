@@ -8,7 +8,7 @@ mod handlers {
 
 // Simulate DAL service initialization
 fn init_dal_service() {
-    let private_key = env::var("PRIVATE_KEY_PERFORMER").expect("PRIVATE_KEY_PERFORMER is not set in environment variables");
+    let private_key = env::var("PRIVATE_KEY").expect("PRIVATE_KEY is not set in environment variables");
     let eth_rpc_url = env::var("OTHENTIC_CLIENT_RPC_ADDRESS").expect("ETH_RPC_URL is not set in environment variables");
 
     services::dal_service::init_config(private_key, eth_rpc_url);

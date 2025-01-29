@@ -6,7 +6,7 @@ use crate::services::validation_service;
 
 #[derive(Deserialize)]
 pub struct ValidateRequest {
-    pub proof_of_task: String,
+    pub proofOfTask: String,
 }
 
 #[derive(Serialize)]
@@ -43,7 +43,7 @@ impl ErrorResponse {
 
 // Handler for the `validate` endpoint
 pub async fn validate_task(request: web::Json<ValidateRequest>) -> impl Responder {
-    let proof_of_task = &request.proof_of_task;
+    let proof_of_task = &request.proofOfTask;
 
     info!("proofOfTask: {}", proof_of_task);
 

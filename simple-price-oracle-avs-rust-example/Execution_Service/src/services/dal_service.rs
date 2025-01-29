@@ -12,7 +12,7 @@ struct Params {
     proof_of_task: String,
     data: String,
     task_definition_id: i32,
-    performer_address: String,
+    performer_address: Address,
     signature: String,
 }
 
@@ -64,7 +64,7 @@ pub async fn send_task(proof_of_task: String, data: String, task_definition_id: 
     let wallet: LocalWallet = config.private_key.parse()?;
     
     // Get the Ethereum address
-    let performer_address: Address = wallet.address();
+    let performer_address = wallet.address();
     println!("Ethereum Address: {:?}", performer_address);
     
     // Prepare the data using ABI encoding
@@ -81,7 +81,7 @@ pub async fn send_task(proof_of_task: String, data: String, task_definition_id: 
         proof_of_task,
         data: format!("0x{}", hex::encode(data.as_bytes())),
         task_definition_id,
-        performer_address: performer_address.to_string(),
+        performer_address: performer_address,
         signature: serialized_signature,
     };
 
