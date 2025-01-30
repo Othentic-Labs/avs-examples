@@ -41,8 +41,9 @@ Illustrates how machine learning models can be incorporated into Othentic’s AV
 Focuses on decentralized access control using AVS. It provides examples of permission management within applications powered by Othentic Stack.
 
 
-This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
 [Liveliness AVS](https://github.com/Othentic-Labs/Liveliness-AVS/) 
 
 Showcases an AVS implementation to ensure system liveliness and availability checks, critical for maintaining robust decentralized services.
 
+
+This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
