@@ -25,9 +25,8 @@ pub async fn execute_task(payload: web::Json<ExecuteTaskPayload>) -> impl Respon
     match oracle_service::get_price("ETHUSDT").await {
         Ok(price_data) => {
             let proof_of_task = price_data.price;
-            let data = "hello"; 
             // Send the task
-            dal_service::send_task(proof_of_task.clone(), data.to_string(), task_definition_id).await;
+            dal_service::send_task(proof_of_task.clone(), task_definition_id).await;
             HttpResponse::Ok().json("Task executed successfully".to_string()) // Return the response as JSON
         }
         Err(err) => {
