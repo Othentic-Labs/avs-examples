@@ -1,24 +1,24 @@
 # examples
 A collection of examples designed to provide hands-on experience for integrating the Othentic Stack:
 
-[Simple Price Oracle AVS JS Example](https://github.com/Othentic-Labs/simple-price-oracle-avs-example)
+[Simple Price Oracle AVS Example JS](https://github.com/Othentic-Labs/simple-price-oracle-avs-example)
 
 A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to Othentic Stack.
 
 
-[Simple Price Oracle AVS Go Example](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example)
+[Simple Price Oracle AVS Example Go ](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example)
 
 This example demonstrates how to implement a simple price oracle AVS in Go using the Othentic Stack.
-
-
-[Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
-
-This example showcases how to utilize **EigenDA** for storing proof-of-task data, providing a scalable and efficient data availability solution for AVSs.
 
 
 [PRNG AVS](https://github.com/Othentic-Labs/PRNG-avs-example)
 
 This example demonstrates a **leader election mechanism** within the Othentic Stack, using a Pseudorandom Number Generator (PRNG) to elect a task performer for a given block.
+
+
+[Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
+
+This example showcases how to utilize **EigenDA** for storing proof-of-task data, providing a scalable and efficient data availability solution for AVSs.
 
 
 [DNS Registry AVS](https://github.com/Othentic-Labs/dnsRegistry-avs/) 
