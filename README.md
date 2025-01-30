@@ -1,4 +1,4 @@
-# examples
+## Starter Templates
 A collection of examples designed to provide hands-on experience for integrating the Othentic Stack:
 
 [Simple Price Oracle AVS Example JS](https://github.com/Othentic-Labs/simple-price-oracle-avs-example)
@@ -16,7 +16,7 @@ This example demonstrates how to implement a simple price oracle AVS in Go using
 This example demonstrates all the advanced concepts incl **leader election mechanism** within the Othentic Stack.
 
 
-## Other Examples
+## Additional Examples
 
 [Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
 
@@ -46,6 +46,7 @@ Focuses on decentralized access control using AVS. It provides examples of permi
 [Liveliness AVS](https://github.com/Othentic-Labs/Liveliness-AVS/) 
 
 Showcases an AVS implementation to ensure system liveliness and availability checks, critical for maintaining robust decentralized services.
+
 
 
 This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
