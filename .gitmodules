@@ -1,0 +1,24 @@
+[submodule "simple-price-oracle-avs-example"]
+	path = simple-price-oracle-avs-example
+	url = https://github.com/Othentic-Labs/simple-price-oracle-avs-example
+[submodule "PRNG-avs-example"]
+	path = PRNG-avs-example
+	url = https://github.com/Othentic-Labs/PRNG-avs-example
+[submodule "price-oracle-example-eigenda"]
+	path = price-oracle-example-eigenda
+	url = https://github.com/Othentic-Labs/price-oracle-example-eigenda
+[submodule "dnsRegistry-avs"]
+	path = dnsRegistry-avs
+	url = https://github.com/Othentic-Labs/dnsRegistry-avs/
+[submodule "lumina-intent-avs"]
+	path = lumina-intent-avs
+	url = https://github.com/Othentic-Labs/lumina-intent-avs/
+[submodule "avs-ml"]
+	path = avs-ml
+	url = https://github.com/Othentic-Labs/avs-ml/
+[submodule "access-control-avs"]
+	path = access-control-avs
+	url = https://github.com/Othentic-Labs/access-control-avs/
+[submodule "Liveliness-AVS"]
+	path = Liveliness-AVS
+	url = https://github.com/Othentic-Labs/Liveliness-AVS/
