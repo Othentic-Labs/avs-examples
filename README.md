@@ -13,8 +13,10 @@ This example demonstrates how to implement a simple price oracle AVS in Go using
 
 [PRNG AVS](https://github.com/Othentic-Labs/PRNG-avs-example)
 
-This example demonstrates a **leader election mechanism** within the Othentic Stack, using a Pseudorandom Number Generator (PRNG) to elect a task performer for a given block.
+This example demonstrates all the advanced concepts incl **leader election mechanism** within the Othentic Stack.
 
+
+## Other Examples
 
 [Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
 
