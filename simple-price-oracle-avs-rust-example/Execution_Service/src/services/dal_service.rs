@@ -71,8 +71,10 @@ pub async fn send_task(proof_of_task: String, task_definition_id: i32) -> Result
     ]);
     let message_hash = keccak256(&encoded_data);
     let signature = wallet.sign_message(message_hash).await?;
-    
-    let serialized_signature = format!("0x{}", hex::encode(signature.to_vec()));
+    let mut signature_bytes = signature.to_vec();
+    println!("Ethereum signature bytes: {:?}", signature_bytes);
+    // signature_bytes[64] += 27;
+    let serialized_signature = format!("0x{}", hex::encode(&signature_bytes));
 
     // Prepare the Params structure with necessary values
     let params = vec![
