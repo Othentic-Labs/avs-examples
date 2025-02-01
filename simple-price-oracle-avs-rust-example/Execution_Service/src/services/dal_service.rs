@@ -1,12 +1,11 @@
 use serde::{Deserialize, Serialize};
 use std::error::Error;
-use ethers::signers::{LocalWallet, Signer};
-use ethers::types::{Address, U256};
-use ethers::abi::AbiEncode;
-use ethers::utils::keccak256;
 use reqwest::Client;
 use serde_json::json;
-use ethers::abi::Token;
+use alloy::{
+    hex::{self, encode}, primitives::{keccak256, Bytes}, signers::{k256::{ecdsa::SigningKey, elliptic_curve::generic_array::GenericArray}, local::PrivateKeySigner, Signer}
+};
+use alloy_sol_types::{SolValue, sol};
 
 #[derive(Debug, Deserialize)]
 struct JsonRpcResponse {
@@ -52,34 +51,34 @@ pub async fn send_task(proof_of_task: String, task_definition_id: i32) -> Result
     let config = unsafe {
         CONFIG.as_ref().expect("Config is not initialized")
     };
+    let data = "hello";
+    let result = Bytes::from(data.as_bytes().to_vec());
 
-    let wallet: LocalWallet = config.private_key.parse()?;
-    
-    // Get the Ethereum address
-    let performer_address = wallet.address();
-    println!("Ethereum Address: {:?}", performer_address);
-    
-    let data = "0x1234567890abcdef";
-    let data_bytes = data.as_bytes();
-    let data_hex = hex::encode(data_bytes);
-    
-    let encoded_data = ethers::abi::encode(&[
-        Token::String(proof_of_task.clone()),
-        Token::Bytes(hex::decode(data_hex).unwrap()),
-        Token::Address(performer_address),
-        Token::Uint(U256::from(task_definition_id)),
-    ]);
+    // let task_definition_id = 0;
+
+    let decoded_key = hex::decode(&config.private_key).unwrap();
+    let signing_key = SigningKey::from_bytes(GenericArray::from_slice(&decoded_key)).unwrap();
+    let signer = PrivateKeySigner::from_signing_key(signing_key);
+
+    let performer_address = signer.address();
+
+    println!("Address {:?}, {:?}, {:?}, {}", proof_of_task, result, performer_address, task_definition_id );
+    let my_values = (proof_of_task.to_string(), &result, performer_address, task_definition_id);
+
+    let encoded_data = my_values.abi_encode_params();
+
+    // println!("encoded_data {:?} ", encoded_data);
     let message_hash = keccak256(&encoded_data);
-    let signature = wallet.sign_message(message_hash).await?;
-    let mut signature_bytes = signature.to_vec();
-    println!("Ethereum signature bytes: {:?}", signature_bytes);
-    // signature_bytes[64] += 27;
-    let serialized_signature = format!("0x{}", hex::encode(&signature_bytes));
+    println!("message_hash {} ", message_hash);
 
-    // Prepare the Params structure with necessary values
+    let signature = signer.sign_hash(&message_hash).await?;
+    let signature_bytes = signature.as_bytes();
+    // let serialized_signature = encode(signature_bytes);
+    let serialized_signature = format!("0x{}", encode(signature_bytes));
+
     let params = vec![
         json!(proof_of_task),
-        json!(data),
+        json!(result),
         json!(task_definition_id),
         json!(performer_address),
         json!(serialized_signature),
