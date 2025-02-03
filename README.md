@@ -22,6 +22,7 @@ This example demonstrates all the advanced features of the CLI including leader 
 
 
 ## Additional Examples
+The following examples are not actively maintained, and some may be outdated compared to the current implementation.
 
 [Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
 
