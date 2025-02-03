@@ -1,0 +1,6 @@
+[submodule "simple-price-oracle-avs-js-example"]
+	path = simple-price-oracle-avs-js-example
+	url = https://github.com/Othentic-Labs/simple-price-oracle-avs-example
+[submodule "PRNG-avs-example"]
+	path = PRNG-avs-example
+	url = https://github.com/Othentic-Labs/PRNG-avs-example
