@@ -8,17 +8,17 @@ A quickstart repository demonstrating an Oracle AVS implementation in JavaScript
 
 [Simple Price Oracle AVS Example Go](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example)
 
-This example demonstrates how to implement a simple price oracle AVS in Go using the Othentic Stack.
+This example demonstrates how to implement a simple price oracle AVS in Go.
 
 
 [Simple Price Oracle AVS Example Rust](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example)
 
-This example demonstrates how to implement a simple price oracle AVS in Rust using the Othentic Stack.
+This example demonstrates how to implement a simple price oracle AVS in Rust.
 
 
 [PRNG AVS](https://github.com/Othentic-Labs/PRNG-avs-example)
 
-This example demonstrates all the advanced concepts incl **leader election mechanism** within the Othentic Stack.
+This example demonstrates all the advanced features of the CLI including leader election mechanism, Hooks Implementation, Custom Task Triggers and more.
 
 
 ## Additional Examples
