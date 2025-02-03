@@ -6,9 +6,14 @@ A collection of examples designed to provide hands-on experience for integrating
 A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to Othentic Stack.
 
 
-[Simple Price Oracle AVS Example Go ](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example)
+[Simple Price Oracle AVS Example Go](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example)
 
 This example demonstrates how to implement a simple price oracle AVS in Go using the Othentic Stack.
+
+
+[Simple Price Oracle AVS Example Rust](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example)
+
+This example demonstrates how to implement a simple price oracle AVS in Rust using the Othentic Stack.
 
 
 [PRNG AVS](https://github.com/Othentic-Labs/PRNG-avs-example)
@@ -50,3 +55,4 @@ Showcases an AVS implementation to ensure system liveliness and availability che
 
 
 This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
+
