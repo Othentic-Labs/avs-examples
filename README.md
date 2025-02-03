@@ -1,4 +1,4 @@
-## Starter Templates
+## [Quickstart Examples](https://docs.othentic.xyz/main/avs-framework/quick-start)
 A collection of examples designed to provide hands-on experience for integrating the Othentic Stack:
 
 [Simple Price Oracle AVS Example JS](https://github.com/Othentic-Labs/simple-price-oracle-avs-example)
