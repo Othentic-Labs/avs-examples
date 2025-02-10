@@ -26,7 +26,7 @@ The Simple Price Oracle AVS Example demonstrates how to deploy a minimal AVS usi
 ## Project Structure
 
 ```mdx
-📂 simple-price-oracle-avs-go-example
+📂 simple-price-oracle-avs-rust-example
 ├── 📂 Execution_Service         # Implements Task execution logic - Backend
 │   ├── main.rs                  # A Rust program to initialize services, set up a POST endpoint `/task/execute`
 │   ├── 📂 handlers/
@@ -37,7 +37,7 @@ The Simple Price Oracle AVS Example demonstrates how to deploy a minimal AVS usi
 │   ├── Dockerfile               # Dockerfile for building and running a Rust app on port 8080.
 │   └── Cargo.toml               # Defines the `Execution_Service` module and required dependencies.
 │
-├── 📂 Validation_Service         # Implements task validation logic - Backend
+├── 📂 Validation_Service        # Implements task validation logic - Backend
 │   ├── main.rs                  # A Rust program to initialize services, set up a POST endpoint `/task/validate`
 │   ├── 📂 handlers/
 │   │   └── task.rs              # Handler for validating a task by processing a POST request.
