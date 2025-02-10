@@ -26,11 +26,30 @@ The Simple Price Oracle AVS Example demonstrates how to deploy a minimal AVS usi
 ## Project Structure
 
 ```mdx
-📂 simple-price-oracle-avs-example
-├── Execution_Service  # Implements task execution logic
-├── Validation_Service # Implements task validation logic
-├── docker-compose.yml # Docker setup for Operator Nodes (Performer, Attesters, Aggregator), Execution Service, Validation Service, and monitoring tools
-└── README.md          # Project documentation
+📂 simple-price-oracle-avs-go-example
+├── 📂 Execution_Service         # Implements Task execution logic - Backend
+│   ├── main.rs                  # A Rust program to initialize services, set up a POST endpoint `/task/execute`
+│   ├── 📂 handlers/
+│   │   └── task.rs              # Handler for executing a task by processing a POST request.
+│   ├── 📂 services/
+│   │   └── dal_service.rs       # A service to call `sendTask` RPC call.
+│   │   ├── oracle_service.rs    # A utility module to fetch the current price of a cryptocurrency pair from the Binance API
+│   ├── Dockerfile               # Dockerfile for building and running a Rust app on port 8080.
+│   └── Cargo.toml               # Defines the `Execution_Service` module and required dependencies.
+│
+├── 📂 Validation_Service         # Implements task validation logic - Backend
+│   ├── main.rs                  # A Rust program to initialize services, set up a POST endpoint `/task/validate`
+│   ├── 📂 handlers/
+│   │   └── task.rs              # Handler for validating a task by processing a POST request.
+│   ├── 📂 services/
+│   │   ├── validation_service.rs # Task verification logic
+│   │   ├── oracle_service.rs    # A utility module to fetch the current price of a cryptocurrency pair from the Binance API
+│   ├── Dockerfile               # Dockerfile for building and running a Rust app on port 8080.
+│   └── Cargo.toml               # Defines the `Validation_Service` module and required dependencies.
+│
+├── docker-compose.yml            # Docker setup for Operator Nodes (Performer, Attesters, Aggregator), Execution Service, Validation Service, and monitoring tools
+├── .env.example                  # An example .env file containing configuration details and contract addresses
+└── README.md                     # Project documentation
 ```
 
 ## Architecture
