@@ -37,7 +37,7 @@ The Simple Price Oracle AVS Example demonstrates how to deploy a minimal AVS usi
 │   │   ├── oracle_service.go    # A utility module to fetch the current price of a cryptocurrency pair from the Binance API
 │   ├── Dockerfile               # Dockerfile for building and running a Go app on port 8080.
 │   ├── go.mod                   # Defines the `Execution_Service` module and required dependencies.
-|   └── main.go                  # A Go program using the Gin framework to initialize services, set up a POST endpoint `/task/execute` for task execution
+|   └── main.go                  # A Go program using the Gin framework to initialize services, set up a POST endpoint `/task/execute`
 │
 ├── 📂 Validation_Service         # Implements task validation logic - Backend
 │   ├── 📂 config/
@@ -48,8 +48,8 @@ The Simple Price Oracle AVS Example demonstrates how to deploy a minimal AVS usi
 │   │   ├── validation_service.go # Task verification logic
 │   │   ├── oracle_service.go    # A utility module to fetch the current price of a cryptocurrency pair from the Binance API
 │   ├── Dockerfile               # Dockerfile for building and running a Go app on port 8080.
-│   ├── go.mod                   # Defines the `Execution_Service` module and required dependencies.
-|   └── main.go                  # A Go program using the Gin framework to initialize services, set up a POST endpoint `/task/execute` for task execution
+│   ├── go.mod                   # Defines the `Validation_Service` module and required dependencies.
+|   └── main.go                  # A Go program using the Gin framework to initialize services, set up a POST endpoint `/task/validate`
 │
 ├── docker-compose.yml            # Docker setup for Operator Nodes (Performer, Attesters, Aggregator), Execution Service, Validation Service, and monitoring tools
 ├── .env.example                  # An example .env file containing configuration details and contract addresses
