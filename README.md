@@ -21,6 +21,10 @@ This example demonstrates how to implement a simple price oracle AVS in Rust.
 This example demonstrates all the advanced features of the CLI including leader election mechanism, Hooks Implementation, Custom Task Triggers and more.
 
 
+[Uniswap V4 Hook AVS Example](https://github.com/Othentic-Labs/avs-examples/tree/main/uniswap-v4-hook-avs-example)
+
+This example demonstrates how to utilize Uniswap V4 hooks to create dynamic fee AVS that addresses the inefficiencies of static fee models in swap contracts.
+
 ## Additional Examples
 The following examples are not actively maintained, and some may be outdated compared to the current implementation.
 
