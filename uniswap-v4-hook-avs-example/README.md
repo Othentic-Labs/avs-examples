@@ -17,8 +17,7 @@ This repository demonstrates how to implement a Dynamic Fees AMM using the Othen
 
 ## Overview
 
-The Simple Price Oracle AVS Example demonstrates how to deploy Dynamic Fee AVS using Othentic Stack.
-
+ This repository explores how to utilize Uniswap V4 hooks with AVS to create dynamic fee that address the inefficiencies of static fee models in swap contracts. It calculates the optimal fee based on Market Volatility(low volatility = lower fees, high volatility = higher fees)
 
 ### Features
 
