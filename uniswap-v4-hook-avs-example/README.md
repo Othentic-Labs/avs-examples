@@ -17,7 +17,7 @@ This repository demonstrates how to implement a Dynamic Fees AMM using the Othen
 
 ## Overview
 
- This repository explores how to utilize Uniswap V4 hooks with AVS to create dynamic fee that address the inefficiencies of static fee models in swap contracts. It calculates the optimal fee based on Market Volatility(low volatility = lower fees, high volatility = higher fees)
+This repository showcases how to utilize Uniswap V4 hooks with Othentic Stack to create dynamic fee AVS that address the inefficiencies of static fee models in swap contracts. It calculates the optimal fee based on Market Volatility(low volatility = lower fees, high volatility = higher fees)
 
 ### Features
 
