@@ -110,10 +110,20 @@ Validation Service logic:
 2. Deploy the DynamicFeesAvsHook Contract: To use hooks, deploy an instance of the `DynamicFeesAvsHook contract` by navigating to the `contracts` directory. 
 
 ```bash
+# Either source .env or replace variables in command
 cd contracts/
 forge install
-forge script script/DynamicFeesAvsHook.s.sol:DynamicFeesAvsHookDeploy --rpc-url <your_rpc_url> --private-key <your_private_key> --broadcast -vvvv --verify --etherscan-api-key $L2_ETHERSCAN_API_KEY --chain $L2_CHAIN --sig="run(address)" $ATTESTATION_CENTER_ADDRESS
-```
+forge script script/DynamicFeesAvsHookDeploy.s.sol:DynamicFeesAvsHookDeploy \
+ --rpc-url $L2_RPC \
+ --private-key $PRIVATE_KEY \
+ --broadcast -vvvv \
+ --verify \
+ --etherscan-api-key $L2_ETHERSCAN_API_KEY \
+ --chain $L2_CHAIN \
+ --verifier-url $L2_VERIFIER_URL \
+ --sig="run(address,address)" \
+ $ATTESTATION_CENTER_ADDRESS $POOL_MANAGER_ADDRESS
+ ```
 
 3. Once the contract is deployed, return to the root of the repository and start the Docker Compose configuration:
 ```bash
