@@ -1,0 +1,143 @@
+version: '3.7'
+x-othentic-cli: &othentic-cli
+  env_file:
+    - .env
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+services:
+  aggregator:
+    <<: *othentic-cli
+    command: ["node", "aggregator", "--json-rpc", "--l1-chain", "holesky", "--l2-chain", "${L2:-amoy}", "--metrics", "--internal-tasks", "--sync-interval", "5400000"]
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY_AGGREGATOR}
+    ports:
+      - "8545:8545"
+      - "9876:9876"
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.69
+  attester-1:
+    <<: *othentic-cli
+    command: [
+      "node",
+      "attester",
+      "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--avs-webapi",
+      "http://10.8.0.42",
+      "--l1-chain", "holesky",
+      "--l2-chain", "${L2:-amoy}",
+    ]
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER1}
+      - TASK_PERFORMER=0x0000000000000000000000000000000000000000
+    depends_on:
+      aggregator:
+        condition: service_started
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.2
+  attester-2:
+    <<: *othentic-cli
+    command: [
+      "node",
+      "attester",
+      "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--avs-webapi",
+      "http://10.8.0.42",
+      "--l1-chain", "holesky",
+      "--l2-chain", "${L2:-amoy}",
+    ]
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER2}
+      - TASK_PERFORMER=0x0000000000000000000000000000000000000000
+    depends_on:
+      aggregator:
+        condition: service_started
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.3
+  attester-3:
+    <<: *othentic-cli
+    command: [
+      "node",
+      "attester",
+      "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--avs-webapi",
+      "http://10.8.0.42",
+      "--l1-chain", "holesky",
+      "--l2-chain", "${L2:-amoy}",
+    ]
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER3}
+      - TASK_PERFORMER=0x0000000000000000000000000000000000000000
+    depends_on:
+      aggregator:
+        condition: service_started
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.4
+  validation-service:
+    build:
+      context: ./Validation_Service
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.42
+  execution-service:
+    build:
+      context: ./Execution_Service
+      dockerfile: ./Dockerfile
+    environment:
+      - OTHENTIC_CLIENT_RPC_ADDRESS=http://10.8.0.69:8545
+      - PRIVATE_KEY=${PRIVATE_KEY_PERFORMER}
+    env_file:
+      - .env
+    ports:
+      - "4003:4003"
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.101
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yaml  # Bind mount the config file
+    ports:
+      - "9090:9090"  # Expose Prometheus on port 9090
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yaml'  # Specify the config file location
+    restart: unless-stopped
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.102
+  
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.103
+    environment:
+    - GF_SECURITY_ADMIN_USER=admin
+    - GF_SECURITY_ADMIN_PASSWORD=admin #Here you can set the password for the admin user
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage: {}
+
+networks:
+  p2p:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.8.0.0/16
+         gateway: 10.8.0.1
