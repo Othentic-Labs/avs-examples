@@ -1,4 +1,4 @@
-# Simple Price Oracle AVS Example
+# Uniswap V4 Hook AVS Example
 
 This repository demonstrates how to implement a Dynamic Fees AMM using the Othentic Stack and Uniswap V4 Hooks.
 
