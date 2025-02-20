@@ -17,7 +17,7 @@ This repository demonstrates how to implement a Dynamic Fees AMM using the Othen
 
 ## Overview
 
-The Simple Price Oracle AVS Example demonstrates how to deploy a minimal AVS using Othentic Stack.
+The Simple Price Oracle AVS Example demonstrates how to deploy Dynamic Fee AVS using Othentic Stack.
 
 
 ### Features
@@ -54,6 +54,8 @@ The Simple Price Oracle AVS Example demonstrates how to deploy a minimal AVS usi
 |   ├── index.js                  # A Node.js server entry point that initializes the DAL service, loads the app configuration, and starts the server on the specified port.
 │   └── package.json              # Node.js dependencies and scripts
 │
+├── 📂 Contracts                  # AVS Logic and Uniswap V4 Hooks contract
+
 ├── 📂 grafana                    # Grafana monitoring configuration
 ├── docker-compose.yml            # Docker setup for Operator Nodes (Performer, Attesters, Aggregator), Execution Service, Validation Service, and monitoring tools
 ├── .env.example                  # An example .env file containing configuration details and contract addresses
@@ -70,14 +72,15 @@ The Performer node executes tasks using the Task Execution Service and sends the
 Attester Nodes validate task execution through the Validation Service. Based on the Validation Service's response, attesters sign the tasks. In this AVS:
 
 Task Execution logic:
-- Fetch the ETHUSDT price.
+- Fetch the ETH/USDT volatility.
+- Calculate swap fee
 - Store the result in IPFS.
 - Share the IPFS CID as proof.
 
 Validation Service logic:
-- Retrieve the price from IPFS using the CID.
-- Get the expected ETHUSDT price.
-- Validate by comparing the actual and expected prices within an acceptable margin.
+- Retrieve the fee from IPFS using the CID.
+- Calculate the expected ETH/USDT fee.
+- Validate by comparing the actual and expected prices within 5% margin.
 ---
 
 ## Prerequisites
@@ -92,8 +95,8 @@ Validation Service logic:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Othentic-Labs/simple-price-oracle-avs-example.git
-   cd simple-price-oracle-avs-example
+   git clone git clone https://github.com/Othentic-Labs/avs-examples.git
+   cd avs-examples/uniswap-v4-hook-avs-example
    ```
 
 2. Install Othentic CLI:
@@ -103,11 +106,26 @@ Validation Service logic:
    ```
 
 ## Usage
+1. Create a .env file and include the deployed contract addresses and private keys for the operators. If you are unfamiliar with AVS, Checkout the [Quickstart guide](https://docs.othentic.xyz/main/avs-framework/quick-start).
+
+2. Deploy the DynamicFeesAvsHook Contract: To use hooks, deploy an instance of the `DynamicFeesAvsHook contract` by navigating to the `contracts` directory. 
+
+```bash
+cd contracts/
+forge install
+forge script script/DynamicFeesAvsHook.s.sol:DynamicFeesAvsHookDeploy --rpc-url <your_rpc_url> --private-key <your_private_key> --broadcast -vvvv --verify --etherscan-api-key $L2_ETHERSCAN_API_KEY --chain $L2_CHAIN --sig="run(address)" $ATTESTATION_CENTER_ADDRESS
+```
+
+3. Once the contract is deployed, return to the root of the repository and start the Docker Compose configuration:
+```bash
+docker-compose up --build
+```
+> [!NOTE]
+> Building the images might take a few minutes
+
+## Usage
 
 Follow the steps in the official documentation's [Quickstart](https://docs.othentic.xyz/main/avs-framework/quick-start#steps) Guide for setup and deployment.
-
-### Next
-Modify the different configurations, tailor the task execution logic as per your use case, and run the AVS.
 
 Happy Building! 🚀
 
