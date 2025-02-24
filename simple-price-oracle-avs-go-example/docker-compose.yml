@@ -8,9 +8,11 @@ x-othentic-cli: &othentic-cli
 services:
   aggregator:
     <<: *othentic-cli
-    command: ["node", "aggregator", "--json-rpc", "--l1-chain", "holesky", "--l2-chain", "${L2:-amoy}", "--metrics", "--internal-tasks", "--sync-interval", "5400000"]
+    command: ["node", "aggregator", "--json-rpc", "--l1-chain", "holesky", "--l2-chain", "${L2:-amoy}", "--metrics", "--internal-tasks", "--sync-interval", "5400000", "--p2p.datadir", "data/peerstore/aggregator"]
     environment:
       - PRIVATE_KEY=${PRIVATE_KEY_AGGREGATOR:-${PRIVATE_KEY:-}}
+    volumes:
+      - ./data/peerstore/aggregator:/app/data/peerstore/aggregator
     ports:
       - "8545:8545"
       - "9876:9876"
@@ -27,10 +29,13 @@ services:
       "http://10.8.0.42",
       "--l1-chain", "holesky",
       "--l2-chain", "${L2:-amoy}",
+      "--p2p.datadir", "data/peerstore/attester1"
     ]
     environment:
       - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER1:-${PRIVATE_KEY_VALIDATOR1:-}}
       - TASK_PERFORMER=0x0000000000000000000000000000000000000000
+    volumes:
+      - ./data/peerstore/attester1:/app/data/peerstore/attester1
     depends_on:
       aggregator:
         condition: service_started
@@ -47,10 +52,13 @@ services:
       "http://10.8.0.42",
       "--l1-chain", "holesky",
       "--l2-chain", "${L2:-amoy}",
+      "--p2p.datadir", "data/peerstore/attester2"
     ]
     environment:
       - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER2:-${PRIVATE_KEY_VALIDATOR2:-}}
       - TASK_PERFORMER=0x0000000000000000000000000000000000000000
+    volumes:
+      - ./data/peerstore/attester2:/app/data/peerstore/attester2
     depends_on:
       aggregator:
         condition: service_started
@@ -67,10 +75,13 @@ services:
       "http://10.8.0.42",
       "--l1-chain", "holesky",
       "--l2-chain", "${L2:-amoy}",
+      "--p2p.datadir", "data/peerstore/attester3"
     ]
     environment:
       - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER3:-${PRIVATE_KEY_VALIDATOR3:-}}
       - TASK_PERFORMER=0x0000000000000000000000000000000000000000
+    volumes:
+      - ./data/peerstore/attester3:/app/data/peerstore/attester3
     depends_on:
       aggregator:
         condition: service_started
