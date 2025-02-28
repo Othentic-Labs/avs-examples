@@ -63,7 +63,8 @@ This repository showcases how to utilize Uniswap V4 hooks with Othentic Stack 
 ```
 
 ## Architecture
-![image](https://github.com/user-attachments/assets/d9423832-e983-4f77-a781-d4e3f80d1774)
+![image](https://github.com/user-attachments/assets/18e09f6b-ecee-4041-9cbd-722d59d22d1f)
+
 
 The Performer node executes tasks using the Task Execution Service and sends the results to the p2p network.
 
