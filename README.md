@@ -58,6 +58,20 @@ Focuses on decentralized access control using AVS. It provides examples of permi
 Showcases an AVS implementation to ensure system liveliness and availability checks, critical for maintaining robust decentralized services.
 
 
+## Eigen Games Submissions
+
+[Parallel EVM AVS](https://github.com/sanjayamirthraj/eigengames)
+The project addresses the challenge of parallel transaction execution by intelligently batching mempool transactions based on independent state accesses. Utilizing Eigenlayer AVS, it introduces a novel approach to parallelizing the EVM through a state access batching algorithm that identifies transactions that can be processed simultaneously.
+
+[Uniswap v4 oderbook AVS](https://github.com/Carnegie-Mellon-Blockchain/SwapBook-EigenGames-2025)
+This project implements a decentralized orderbook system that processes orders off-chain while settling trades on-chain. It leverages EigenLayer's AVS infrastructure for secure off-chain computation and integrates with Uniswap V4 Hooks to offer improved trading between the orderbook and AMMs.
+
+[AI Inference AVS](https://github.com/ToxicPine/eigentensor-submission-eigengames)
+The project implements task execution on remote GPUs through a simple REST API. By leveraging GPU optimizations and graph-based computation, it reduces system requirements for AVS operations. The implementation relies on Eigenlayer’s consensus system and introduces the Manhattan distance metric to handle non-deterministic GPU computations, ensuring near-equal tensor outputs across nodes.
+
+[GPU hardware validation system](https://github.com/aabdel0181/Quok-Agent)
+The project validates GPU authenticity through PCI ID verification, VBIOS integrity checks, and secure boot validation. Built on modifications of Coinbase’s CDP Agentkit, it extends their work while integrating voice capabilities inspired by langchain-ai/react-voice-agent. This implementation enhances GPU-based computation security and efficiency within the EigenTensor AVS framework.
+
 
 This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
 
