@@ -87,12 +87,12 @@ This project leverages homomorphic encryption to generate a privacy-preserving p
 This example showcases how to utilize **EigenDA** for storing proof-of-task data, providing a scalable and efficient data availability solution for AVSs.
 
 
-[DNS Registry AVS](https://github.com/Othentic-Labs/dnsRegistry-avs/) 
+[DNS Registry](https://github.com/Othentic-Labs/dnsRegistry-avs/) 
 
 Demonstrates how to implement a decentralized DNS registry using AVS. It focuses on integrating domain management functionality with Othentic Stack.
 
 
-[Lumina Intent AVS](https://github.com/Othentic-Labs/lumina-intent-avs/)
+[Lumina Intent](https://github.com/Othentic-Labs/lumina-intent-avs/)
 
 An example of intent-based transaction management using Lumina and AVS. It highlights how to handle user intents within decentralized systems.
 
@@ -102,12 +102,12 @@ An example of intent-based transaction management using Lumina and AVS. It highl
 Illustrates how machine learning models can be incorporated into Othentic’s AVS framework. This repo is ideal for developers looking to blend ML and decentralized solutions.
 
 
-[Access Control AVS](https://github.com/Othentic-Labs/access-control-avs/)
+[Access Control](https://github.com/Othentic-Labs/access-control-avs/)
 
 Focuses on decentralized access control using AVS. It provides examples of permission management within applications powered by Othentic Stack.
 
 
-[Liveliness AVS](https://github.com/Othentic-Labs/Liveliness-AVS/) 
+[Liveliness](https://github.com/Othentic-Labs/Liveliness-AVS/) 
 
 Showcases an AVS implementation to ensure system liveliness and availability checks, critical for maintaining robust decentralized services.
 
