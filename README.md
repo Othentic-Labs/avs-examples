@@ -36,7 +36,7 @@ The project addresses the challenge of parallel transaction execution by intelli
 
 ### ⚡ Defi
 
-[Uniswap v4 orderbook](https://github.com/Othentic-Labs/Uniswap-orderbook) 
+[Uniswap v4 Orderbook](https://github.com/Othentic-Labs/Uniswap-orderbook) 
 
 This project implements a decentralized orderbook system that processes orders off-chain while settling trades on-chain. It leverages EigenLayer's AVS infrastructure for secure off-chain computation and integrates with Uniswap V4 Hooks to offer improved trading between the orderbook and AMMs.
 
@@ -52,25 +52,25 @@ This project builds a decentralized prediction market using AVS with dual AI age
 
 The project implements task execution on remote GPUs through a simple REST API. By leveraging GPU optimizations and graph-based computation, it reduces system requirements for AVS operations. The implementation relies on Eigenlayer’s consensus system and introduces the Manhattan distance metric to handle non-deterministic GPU computations, ensuring near-equal tensor outputs across nodes.
 
-[Deepfake detection](https://github.com/Othentic-Labs/Deepfake-detection)
+[Deepfake Detection](https://github.com/Othentic-Labs/Deepfake-detection)
 
 This project uses deepfake detection techniques to verify camera authenticity for legal applications, ensuring reliable and tamper-proof footage. 
 
 
-[AI Model benchmarking](https://github.com/Othentic-Labs/Model-benchmarking)
+[AI Model Benchmarking](https://github.com/Othentic-Labs/Model-benchmarking)
 
 This project provides hospitals, with reliable benchmarks for biotech AI models, ensuring transparency in healthcare AI. Using AVS, it validates model performance claims and assess how well they generalize across different patient groups. Hospitals can submit AI models for benchmarking, compare results on the leaderboard, and make informed decisions about model adoption.
 
 ### 🖥 Hardware & Security
 
-[GPU hardware validation system](https://github.com/Othentic-Labs/GPU-auth-agent)
+[GPU Hardware Validation System](https://github.com/Othentic-Labs/GPU-auth-agent)
 
 The project validates GPU authenticity through PCI ID verification, VBIOS integrity checks, and secure boot validation. Built on modifications of Coinbase’s CDP Agentkit, it extends their work while integrating voice capabilities inspired by langchain-ai/react-voice-agent. This implementation enhances GPU-based computation security and efficiency within the EigenTensor AVS framework.
 
 
 ### 🔒 Privacy
 
-[FHE Image processing](https://github.com/Othentic-Labs/Secure-image-processing)
+[FHE Image Processing](https://github.com/Othentic-Labs/Secure-image-processing)
 
 This project leverages FHE (Fully Homomorphic Encryption) to enable privacy-preserving image processing. Users can encrypt their images, submit encrypted tasks, and receive processed results without exposing their data to any third party. Built using Zama’s TFHE-rs library and Rust, this solution ensures trustless verification while addressing the trade-off between computational efficiency and privacy. 
 
