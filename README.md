@@ -70,7 +70,7 @@ The project validates GPU authenticity through PCI ID verification, VBIOS integr
 
 ### 🔒 Privacy
 
-[FHE Image processing](https://github.com/nschaievitch/eigen-games-25)
+[FHE Image processing](https://github.com/Othentic-Labs/Secure-image-processing)
 
 This project leverages FHE (Fully Homomorphic Encryption) to enable privacy-preserving image processing. Users can encrypt their images, submit encrypted tasks, and receive processed results without exposing their data to any third party. Built using Zama’s TFHE-rs library and Rust, this solution ensures trustless verification while addressing the trade-off between computational efficiency and privacy. 
 
