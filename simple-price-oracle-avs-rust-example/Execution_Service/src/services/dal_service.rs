@@ -80,7 +80,7 @@ pub async fn send_task(proof_of_task: String, task_definition_id: i32) -> Result
         json!(proof_of_task),
         json!(result),
         json!(task_definition_id),
-        json!(performer_address),
+        json!(performer_address.to_checksum(None)),
         json!(serialized_signature),
     ];
 
