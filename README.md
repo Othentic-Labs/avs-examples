@@ -80,6 +80,7 @@ This project leverages FHE (Fully Homomorphic Encryption) to enable privacy-pres
 This project leverages homomorphic encryption to generate a privacy-preserving proof of bids, ensuring secure and confidential participation in prediction markets, while Uniswap’s AMM efficiently fills market orders.
 
 
+---
 
 [Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
 
@@ -110,10 +111,7 @@ Focuses on decentralized access control using AVS. It provides examples of permi
 
 Showcases an AVS implementation to ensure system liveliness and availability checks, critical for maintaining robust decentralized services.
 
-
-
-
-
+---
 
 This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
 
