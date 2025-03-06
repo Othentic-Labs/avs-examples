@@ -75,7 +75,7 @@ The project validates GPU authenticity through PCI ID verification, VBIOS integr
 This project leverages FHE (Fully Homomorphic Encryption) to enable privacy-preserving image processing. Users can encrypt their images, submit encrypted tasks, and receive processed results without exposing their data to any third party. Built using Zama’s TFHE-rs library and Rust, this solution ensures trustless verification while addressing the trade-off between computational efficiency and privacy. 
 
 
-[Prediction Market Oderbook](https://github.com/Othentic-Labs/prediction-market-orderbook)
+[Prediction Market Orderbook](https://github.com/Othentic-Labs/prediction-market-orderbook)
 
 This project leverages homomorphic encryption to generate a privacy-preserving proof of bids, ensuring secure and confidential participation in prediction markets, while Uniswap’s AMM efficiently fills market orders.
 
