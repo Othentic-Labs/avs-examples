@@ -25,40 +25,9 @@ This example demonstrates all the advanced features of the CLI including leader 
 
 This example demonstrates how to utilize Uniswap V4 hooks to create dynamic fee AVS that addresses the inefficiencies of static fee models in swap contracts.
 
+
 ## Additional Examples
-The following examples are not actively maintained, and some may be outdated compared to the current implementation.
-
-[Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
-
-This example showcases how to utilize **EigenDA** for storing proof-of-task data, providing a scalable and efficient data availability solution for AVSs.
-
-
-[DNS Registry AVS](https://github.com/Othentic-Labs/dnsRegistry-avs/) 
-
-Demonstrates how to implement a decentralized DNS registry using AVS. It focuses on integrating domain management functionality with Othentic Stack.
-
-
-[Lumina Intent AVS](https://github.com/Othentic-Labs/lumina-intent-avs/)
-
-An example of intent-based transaction management using Lumina and AVS. It highlights how to handle user intents within decentralized systems.
-
-
-[AVS-ML](https://github.com/Othentic-Labs/avs-ml/)
-
-Illustrates how machine learning models can be incorporated into Othentic’s AVS framework. This repo is ideal for developers looking to blend ML and decentralized solutions.
-
-
-[Access Control AVS](https://github.com/Othentic-Labs/access-control-avs/)
-
-Focuses on decentralized access control using AVS. It provides examples of permission management within applications powered by Othentic Stack.
-
-
-[Liveliness AVS](https://github.com/Othentic-Labs/Liveliness-AVS/) 
-
-Showcases an AVS implementation to ensure system liveliness and availability checks, critical for maintaining robust decentralized services.
-
-
-## Eigen Games Submissions
+The following examples are not official samples nor actively maintained, and some may be outdated.
 
 [Parallel EVM AVS](https://github.com/sanjayamirthraj/eigengames)
 
@@ -109,6 +78,38 @@ This project leverages FHE (Fully Homomorphic Encryption) to enable privacy-pres
 [Prediction Market Oderbook AVS](https://github.com/Gnome101/simple-price-oracle-avs-example)
 
 This project leverages homomorphic encryption to generate a privacy-preserving proof of bids, ensuring secure and confidential participation in prediction markets, while Uniswap’s AMM efficiently fills market orders.
+
+
+
+[Simple Price Oracle Example with EigenDA](https://github.com/Othentic-Labs/price-oracle-example-eigenda)  
+
+This example showcases how to utilize **EigenDA** for storing proof-of-task data, providing a scalable and efficient data availability solution for AVSs.
+
+
+[DNS Registry AVS](https://github.com/Othentic-Labs/dnsRegistry-avs/) 
+
+Demonstrates how to implement a decentralized DNS registry using AVS. It focuses on integrating domain management functionality with Othentic Stack.
+
+
+[Lumina Intent AVS](https://github.com/Othentic-Labs/lumina-intent-avs/)
+
+An example of intent-based transaction management using Lumina and AVS. It highlights how to handle user intents within decentralized systems.
+
+
+[AVS-ML](https://github.com/Othentic-Labs/avs-ml/)
+
+Illustrates how machine learning models can be incorporated into Othentic’s AVS framework. This repo is ideal for developers looking to blend ML and decentralized solutions.
+
+
+[Access Control AVS](https://github.com/Othentic-Labs/access-control-avs/)
+
+Focuses on decentralized access control using AVS. It provides examples of permission management within applications powered by Othentic Stack.
+
+
+[Liveliness AVS](https://github.com/Othentic-Labs/Liveliness-AVS/) 
+
+Showcases an AVS implementation to ensure system liveliness and availability checks, critical for maintaining robust decentralized services.
+
 
 
 
