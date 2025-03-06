@@ -65,20 +65,41 @@ Showcases an AVS implementation to ensure system liveliness and availability che
 The project addresses the challenge of parallel transaction execution by intelligently batching mempool transactions based on independent state accesses. Utilizing Eigenlayer AVS, it introduces a novel approach to parallelizing the EVM through a state access batching algorithm that identifies transactions that can be processed simultaneously.
 
 
+### ⚡ Defi
+
 [Uniswap v4 oderbook AVS](https://github.com/Carnegie-Mellon-Blockchain/SwapBook-EigenGames-2025) 
 
 This project implements a decentralized orderbook system that processes orders off-chain while settling trades on-chain. It leverages EigenLayer's AVS infrastructure for secure off-chain computation and integrates with Uniswap V4 Hooks to offer improved trading between the orderbook and AMMs.
 
 
+[AI Powered Prediction Markets AVS](https://github.com/Pravesh-mansharamani/EigenBets)
+
+This project builds a decentralized prediction market using AVS with dual AI agents, Gaia and Hyperbolic, for deterministic event resolution. It integrates Uniswap v4 Hooks for binary betting, AVS for price and sentiment analysis.
+
+
+### 🤖 AI & Machine Learning
+
 [AI Inference AVS](https://github.com/ToxicPine/eigentensor-submission-eigengames)
 
 The project implements task execution on remote GPUs through a simple REST API. By leveraging GPU optimizations and graph-based computation, it reduces system requirements for AVS operations. The implementation relies on Eigenlayer’s consensus system and introduces the Manhattan distance metric to handle non-deterministic GPU computations, ensuring near-equal tensor outputs across nodes.
 
+[Deepfake detection AVS](https://github.com/shreybirmiwal/unagi)
+
+This project uses deepfake detection techniques to verify camera authenticity for legal applications, ensuring reliable and tamper-proof footage. 
+
+
+[AI benchmarking AVS](https://github.com/Amitten77/ETHDenver2025)
+
+This project provides hospitals, with reliable benchmarks for biotech AI models, ensuring transparency in healthcare AI. Using AVS, it validates model performance claims and assess how well they generalize across different patient groups. Hospitals can submit AI models for benchmarking, compare results on the leaderboard, and make informed decisions about model adoption.
+
+### 🖥 Hardware & Security
 
 [GPU hardware validation system](https://github.com/aabdel0181/Quok-Agent)
 
 The project validates GPU authenticity through PCI ID verification, VBIOS integrity checks, and secure boot validation. Built on modifications of Coinbase’s CDP Agentkit, it extends their work while integrating voice capabilities inspired by langchain-ai/react-voice-agent. This implementation enhances GPU-based computation security and efficiency within the EigenTensor AVS framework.
 
+
+### 🔒 Privacy
 
 [FHE Image processing AVS](https://github.com/nschaievitch/eigen-games-25)
 
@@ -90,19 +111,6 @@ This project leverages FHE (Fully Homomorphic Encryption) to enable privacy-pres
 This project leverages homomorphic encryption to generate a privacy-preserving proof of bids, ensuring secure and confidential participation in prediction markets, while Uniswap’s AMM efficiently fills market orders.
 
 
-[Deepfake detection AVS](https://github.com/shreybirmiwal/unagi)
-
-This project uses deepfake detection techniques to verify camera authenticity for legal applications, ensuring reliable and tamper-proof footage. 
-
-
-[AI benchmarking AVS](https://github.com/Amitten77/ETHDenver2025)
-
-This project provides hospitals, with reliable benchmarks for biotech AI models, ensuring transparency in healthcare AI. Using AVS, it validates model performance claims and assess how well they generalize across different patient groups. Hospitals can submit AI models for benchmarking, compare results on the leaderboard, and make informed decisions about model adoption.
-
-
-[AI Powered Prediction Markets AVS](https://github.com/Pravesh-mansharamani/EigenBets)
-
-This project builds a decentralized prediction market using AVS with dual AI agents, Gaia and Hyperbolic, for deterministic event resolution. It integrates Uniswap v4 Hooks for binary betting, AVS for price and sentiment analysis.
 
 
 
