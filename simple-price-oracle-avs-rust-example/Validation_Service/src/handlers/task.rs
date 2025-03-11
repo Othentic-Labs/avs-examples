@@ -9,6 +9,11 @@ pub struct ValidateRequest {
     pub proofOfTask: String,
 }
 
+#[derive(Deserialize)]
+pub struct ValidateCustomRequest {
+    pub data: String,
+}
+
 #[derive(Serialize)]
 pub struct CustomResponse {
     pub data: serde_json::Value,
@@ -54,6 +59,36 @@ pub async fn validate_task(request: web::Json<ValidateRequest>) -> impl Responde
             let response = CustomResponse::new(
                 json!({ "result": result }),
                 "Task validated successfully",
+            );
+
+            HttpResponse::Ok().json(response)
+        }
+        Err(err) => {
+            error!("Validation error: {}", err);
+            
+            let response = ErrorResponse::new(
+                json!({}),
+                "Error during validation step",
+            );
+            
+            HttpResponse::InternalServerError().json(response)
+        }
+    }
+}
+
+
+pub async fn validate_custom_task(request: web::Json<ValidateCustomRequest>) -> impl Responder {
+    let data = &request.data;
+
+    info!("custom data: {}", data);
+
+    match validation_service::validate_custom(&data) {
+        Ok(result) => {
+            info!("Vote: {}", if result { "Approve" } else { "Not Approved" });
+
+            let response = CustomResponse::new(
+                json!({ "result": result }),
+                "Custom Task validated successfully",
             );
 
             HttpResponse::Ok().json(response)

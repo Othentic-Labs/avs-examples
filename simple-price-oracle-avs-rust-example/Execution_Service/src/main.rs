@@ -39,7 +39,8 @@ async fn main() -> std::io::Result<()> {
     println!("Server started on port: {}", port);
     HttpServer::new(|| {
         App::new()
-        .route("/task/execute", web::post().to(handlers::task::execute_task))
+        .route("/task/execute", web::post().to(handlers::task::execute_custom_task))
+        .route("/task/custom", web::get().to(handlers::task::execute_custom_task)) // New route
     })
     .bind(("0.0.0.0", port))?
     .run()

@@ -120,3 +120,38 @@ async fn make_rpc_request(rpc_url: &String, params: Vec<serde_json::Value>) -> R
         Err("Unknown RPC response".into())
     }
 }
+
+
+// Function for sending the RPC request
+pub async fn send_custom_task(data: &str) -> Result<String, Box<dyn Error>> {
+    let config = unsafe {
+        CONFIG.as_ref().expect("Config is not initialized")
+    };
+    let client = Client::new();
+    
+    println!("Sending custom task with params: {:?}", data);
+
+    let body = json!({
+        "jsonrpc": "2.0",
+        "method": "sendCustomMessage",
+        "params": [data],
+        "id": 1
+    });
+
+    let response = client.post(&config.eth_rpc_url)
+        .json(&body)
+        .send()
+        .await?;
+
+    // Deserialize the response
+    let rpc_response: JsonRpcResponse = response.json().await?;
+    println!("Sent custom task with params: ");
+    // Handle the response
+    if let Some(result) = rpc_response.result {
+        Ok(format!("Custom Task executed successfully with result {:?}", result)) 
+    } else if let Some(error) = rpc_response.error {
+        Err(format!("RPC Error {}: {}", error.code, error.message).into())
+    } else {
+        Err("Unknown RPC response".into())
+    }
+}

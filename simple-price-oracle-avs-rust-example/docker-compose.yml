@@ -8,11 +8,18 @@ x-othentic-cli: &othentic-cli
 services:
   aggregator:
     <<: *othentic-cli
-    command: ["node", "aggregator", "--json-rpc", "--l1-chain", "holesky", "--l2-chain", "${L2:-amoy}", "--metrics", "--internal-tasks", "--sync-interval", "5400000", "--p2p.datadir", "data/peerstore/aggregator"]
+    command: [
+      "node",
+      "aggregator",
+      "--json-rpc",
+      "--json-rpc.custom-message-enabled",
+      "--l1-chain", "holesky",
+      # Set the L2 chain (default: polygon amoy) 
+      "--l2-chain", "${L2:-amoy}",
+      "--internal-tasks", "--sync-interval", "5400000",
+    ]
     environment:
-      - PRIVATE_KEY=${PRIVATE_KEY_AGGREGATOR:-${PRIVATE_KEY:-}}
-    volumes:
-      - ./data/peerstore/aggregator:/app/data/peerstore/aggregator
+      - PRIVATE_KEY=${PRIVATE_KEY_AGGREGATOR}
     ports:
       - "8545:8545"
       - "9876:9876"
@@ -25,17 +32,16 @@ services:
       "node",
       "attester",
       "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--json-rpc.custom-message-enabled",
       "--avs-webapi",
       "http://10.8.0.42",
       "--l1-chain", "holesky",
+      # Set the L2 chain (default: polygon amoy) 
       "--l2-chain", "${L2:-amoy}",
-      "--p2p.datadir", "data/peerstore/attester1"
     ]
     environment:
-      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER1:-${PRIVATE_KEY_VALIDATOR1:-}}
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER1}
       - TASK_PERFORMER=0x0000000000000000000000000000000000000000
-    volumes:
-      - ./data/peerstore/attester1:/app/data/peerstore/attester1
     depends_on:
       aggregator:
         condition: service_started
@@ -48,17 +54,16 @@ services:
       "node",
       "attester",
       "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--json-rpc.custom-message-enabled",
       "--avs-webapi",
       "http://10.8.0.42",
       "--l1-chain", "holesky",
+      # Set the L2 chain (default: polygon amoy) 
       "--l2-chain", "${L2:-amoy}",
-      "--p2p.datadir", "data/peerstore/attester2"
     ]
     environment:
-      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER2:-${PRIVATE_KEY_VALIDATOR2:-}}
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER2}
       - TASK_PERFORMER=0x0000000000000000000000000000000000000000
-    volumes:
-      - ./data/peerstore/attester2:/app/data/peerstore/attester2
     depends_on:
       aggregator:
         condition: service_started
@@ -71,17 +76,16 @@ services:
       "node",
       "attester",
       "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--json-rpc.custom-message-enabled",
       "--avs-webapi",
       "http://10.8.0.42",
       "--l1-chain", "holesky",
+      # Set the L2 chain (default: polygon amoy) 
       "--l2-chain", "${L2:-amoy}",
-      "--p2p.datadir", "data/peerstore/attester3"
     ]
     environment:
-      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER3:-${PRIVATE_KEY_VALIDATOR3:-}}
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER3}
       - TASK_PERFORMER=0x0000000000000000000000000000000000000000
-    volumes:
-      - ./data/peerstore/attester3:/app/data/peerstore/attester3
     depends_on:
       aggregator:
         condition: service_started
@@ -103,7 +107,7 @@ services:
       dockerfile: ./Dockerfile
     environment:
       - OTHENTIC_CLIENT_RPC_ADDRESS=http://10.8.0.69:8545
-      - PRIVATE_KEY=${PRIVATE_KEY_PERFORMER:-${PRIVATE_KEY:-}}
+      - PRIVATE_KEY=${PRIVATE_KEY_PERFORMER}
     env_file:
       - .env
     ports:

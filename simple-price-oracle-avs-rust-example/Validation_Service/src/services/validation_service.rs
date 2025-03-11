@@ -29,3 +29,10 @@ pub async fn validate(proof_of_task: &str) -> Result<bool, String> {
         Err(e) => Err(format!("Error fetching price data: {}", e)),
     }
 }
+
+pub fn validate_custom(data: &str) -> Result<bool, String> {
+    match data {
+        "abc" => Ok(true),
+        _ => Ok(false),
+    }
+}

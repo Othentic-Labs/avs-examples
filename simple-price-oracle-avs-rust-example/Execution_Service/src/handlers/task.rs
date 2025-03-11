@@ -1,6 +1,7 @@
 use actix_web::{web, HttpResponse, Responder};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::string;
 use crate::services::dal_service; // Import from services/price.rs
 use crate::services::oracle_service;  // Import from services/task.rs
 
@@ -8,6 +9,7 @@ use crate::services::oracle_service;  // Import from services/task.rs
 pub struct ExecuteTaskPayload {
     pub taskDefinitionId: Option<i32>, // optional in case it's not included in the request body
 }
+
 
 #[derive(Serialize)]
 struct CustomResponse {
@@ -36,4 +38,26 @@ pub async fn execute_task(payload: web::Json<ExecuteTaskPayload>) -> impl Respon
             
         }
     }
+}
+
+
+pub async fn execute_custom_task() -> impl Responder {
+    println!("Executing Custom Task");
+
+    // Default taskDefinitionId to 0 if not provided
+    let data = "0x746573744d657373616765";
+    println!("task_definition_id: {}", data);
+    match dal_service::send_custom_task(data).await {
+        Ok(data) => {
+            HttpResponse::Ok().json("Custom Task executed successfully".to_string()) // Return the response as JSON
+        }
+        Err(err) => {
+            // Error fetching price
+            eprintln!("Error fetching price: {}", err);
+            HttpResponse::ServiceUnavailable().json("Network error occurred")
+            
+        }
+    }
+
+    
 }
