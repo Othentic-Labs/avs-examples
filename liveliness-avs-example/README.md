@@ -46,7 +46,7 @@ The `LivelinessRegistry` contract acts as the core registry for operator metadat
 
 ### End-to-End Flow
 
-![alt text](image-1.png)
+![alt text](avs.png)
 
 #### Task Performer
 
