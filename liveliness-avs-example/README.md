@@ -37,9 +37,7 @@ Any operator can join the network, register a health-check endpoint, and begin e
 Operators register their health-check endpoints to the `LivelinessRegistry` contract. This endpoint is later queried by the AVS to get health proofs. Operators can also choose not to register an endpoint, but as a result, they will not gain a reputation.
 
 
-🛠️ AVS Logic Hook (LivelinessRegistry.sol)
-
-The contract acts as the core registry for operator metadata, liveness scores, and penalty tracking. It manages:
+The `LivelinessRegistry` contract acts as the core registry for operator metadata, liveness scores, and penalty tracking. It manages:
 
 - Operator registration and deregistration
 - Health-check endpoint updates
@@ -50,7 +48,7 @@ The contract acts as the core registry for operator metadata, liveness scores, a
 
 ![alt text](image-1.png)
 
-#### 🔁 Task Performer
+#### Task Performer
 
 1. Executes health-check tasks on every block production:
 2. Selects a random set of registered operators
@@ -59,14 +57,14 @@ The contract acts as the core registry for operator metadata, liveness scores, a
 
 > If the Performer is inactive or submits invalid data, it may be penalized.
 
-#### ✅ Task Attesters
+#### Task Attesters
 
 A quorum of Attester nodes that:
 
 1. Validate the task results submitted by the Performer
 2. Vote on the accuracy of operator health statuses
 
-#### 🔗 Task Aggregator
+#### Task Aggregator
 
 - Listens for attester votes
 - Aggregates BLS signatures once quorum (≥66%) is reached
