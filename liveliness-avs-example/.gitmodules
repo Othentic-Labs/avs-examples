@@ -1,0 +1,9 @@
+[submodule "liveliness-avs-example/contracts/lib/forge-std"]
+	path = liveliness-avs-example/contracts/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "liveliness-avs-example/contracts/lib/openzeppelin-contracts"]
+	path = liveliness-avs-example/contracts/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "liveliness-avs-example/contracts/lib/contracts"]
+	path = liveliness-avs-example/contracts/lib/contracts
+	url = https://github.com/Othentic-Labs/contracts

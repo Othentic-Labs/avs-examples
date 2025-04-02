@@ -1,0 +1,123 @@
+version: '3.7'
+x-othentic-cli: &othentic-cli
+  env_file:
+    - .env
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+services:
+  aggregator:
+    <<: *othentic-cli
+    command: ["node", "aggregator", "--json-rpc"]
+    ports:
+      - "8545:8545"
+      - "9876:9876"
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.69
+  attester-1:
+    <<: *othentic-cli
+    command: [
+      "node",
+      "attester",
+      "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--avs-webapi",
+      "http://10.8.0.42",
+      "--json-rpc",
+    ]
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER1}
+    depends_on:
+      aggregator:
+        condition: service_started
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.2
+  attester-2:
+    <<: *othentic-cli
+    command: [
+      "node",
+      "attester",
+      "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--avs-webapi",
+      "http://10.8.0.42",
+      "--json-rpc",
+    ]
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER2}
+    depends_on:
+      aggregator:
+        condition: service_started
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.3
+  attester-3:
+    <<: *othentic-cli
+    command: [
+      "node",
+      "attester",
+      "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
+      "--avs-webapi",
+      "http://10.8.0.42",
+      "--json-rpc"
+    ]
+    environment:
+      - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER3}
+    depends_on:
+      aggregator:
+        condition: service_started
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.4
+  external-attester:
+    build:
+      dockerfile: ./Dockerfile.operator
+    env_file:
+      - .env.operator
+    command: ["node"]
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.201
+  external-validation-service:
+    build:
+      dockerfile: ./Dockerfile.operator
+    env_file: 
+      - .env.operator
+    command: ["avs-webapi"]
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.202
+  validation-service:
+    build:
+      context: ./liveliness-avs-example
+      dockerfile: ./Dockerfile
+      args:
+        - PACKAGE_NAME=Validation_Service
+    env_file:
+      - .env
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.42
+  execution-service:
+    build:
+      context: ./liveliness-avs-example
+      dockerfile: ./Dockerfile
+      args:
+        - PACKAGE_NAME=Execution_Service
+    environment:
+      - OTHENTIC_CLIENT_RPC_ADDRESS=http://10.8.0.69:8545
+    env_file:
+      - .env
+    ports:
+      - "4003:4003"
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.101
+
+networks:
+  p2p:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.8.0.0/16
+         gateway: 10.8.0.1

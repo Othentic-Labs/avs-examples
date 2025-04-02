@@ -1,0 +1,40 @@
+x-othentic-cli: &othentic-cli
+  env_file:
+    - .env.aggregator
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+services:
+  aggregator:
+    <<: *othentic-cli
+    command: ["node", "aggregator", "--json-rpc"]
+    image: liveliness-avs/aggregator
+    ports:
+      - "8545:8545"
+      - "9876:9876"
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.69
+  execution-service:
+    image: liveliness-avs/execution-service
+    build:
+      context: ./liveliness-avs-example
+      dockerfile: ./Dockerfile
+      args:
+        - PACKAGE_NAME=Execution_Service
+    environment:
+      - OTHENTIC_CLIENT_RPC_ADDRESS=http://10.8.0.69:8545
+    env_file:
+      - .env
+    networks:
+      p2p:
+        ipv4_address: 10.8.0.101
+
+networks:
+  p2p:
+    external: true
+    driver: bridge
+    ipam:
+    config:
+      - subnet: 10.8.0.0/16
+        gateway: 10.8.0.1
