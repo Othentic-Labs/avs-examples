@@ -80,7 +80,7 @@ Validation Service logic:
 1. Clone the repository:
 
    ```bash
-   git clone git clone https://github.com/Othentic-Labs/avs-examples.git
+   git clone https://github.com/Othentic-Labs/avs-examples.git
    cd avs-examples/simple-price-oracle-avs-rust-example
    ```
 
