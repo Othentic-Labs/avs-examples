@@ -30,7 +30,7 @@ The Leaderless Auction AVS Example showcases how to implement a leaderless aucti
 
 ### 🔁 Auction Lifecycle
 
-| Phase         | Topic                  | Description                                                                 |
+| Phase         | Message Type           | Description                                                                 |
 |---------------|------------------------|-----------------------------------------------------------------------------|
 | Start         | `auction/start`        | Triggers auction with an ID and timestamp                                  |
 | Commit Phase  | `auction/bid_commit`   | Nodes commit a hash of their bid + salt                                    |

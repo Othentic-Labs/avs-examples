@@ -71,8 +71,8 @@ async function determineWinner() {
     }
 }
 
-async function publishTask(topic, taskData) {
-    taskData.topic = topic;
+async function publishTask(messageType, taskData) {
+    taskData.messageType = messageType;
     const jsonData = JSON.stringify(taskData);
     const rpcUrl = process.env.OTHENTIC_CLIENT_RPC_ADDRESS; // Replace with actual RPC server URL
     const hexData = Buffer.from(jsonData, "utf8").toString("hex");
@@ -111,12 +111,12 @@ async function handleAuctionStart(msg) {
 
 router.post("/message", async (req, res) => {
 
-    console.log(`Node started and listening to bid_commit and bid_reveal topics.`);
+    console.log(`Node started and listening to bid_commit and bid_reveal messageTypes.`);
     const { data } = req.body;
     const jsonData = Buffer.from(data.slice(2), "hex").toString("utf8");
     const parsedData = JSON.parse(jsonData);
 
-    switch (parsedData.topic) {
+    switch (parsedData.messageType) {
         case AUCTION_START:
             await handleAuctionStart(parsedData);
             break;

@@ -38,8 +38,8 @@ router.post("/elect", async (req, res) => {
     }
 });
 
-async function publishTask(topic, taskData) {
-    taskData.topic = topic;
+async function publishTask(messageType, taskData) {
+    taskData.messageType = messageType;
     const jsonData = JSON.stringify(taskData);
     const rpcUrl = process.env.OTHENTIC_CLIENT_RPC_ADDRESS; // Replace with actual RPC server URL
     const hexData = Buffer.from(jsonData, "utf8").toString("hex");
