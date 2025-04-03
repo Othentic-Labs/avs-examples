@@ -105,7 +105,7 @@ Attester Nodes validate task execution through the Validation Service. Based on 
 - Follow the steps in the official documentation's [Quickstart](https://docs.othentic.xyz/main/avs-framework/quick-start#steps) Guide for setup and deployment.
 - Call auction start:
 ```
-curl -X POST http://localhost:4003/elect
+curl -X POST http://localhost:4003/task/elect
 ```
 
 
