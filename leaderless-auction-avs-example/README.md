@@ -44,9 +44,9 @@ The Leaderless Auction AVS Example showcases how to implement a leaderless aucti
 const commitment = keccak256(toUtf8Bytes(bid + salt));
 ```
 
-Commit: Each node generates a salt + bid, hashes it, and publishes only the commitment.
-Reveal: After a timer, the node publishes its original bid + salt.
-Verify: All nodes check if hash(bid + salt) matches the commitment.
+- Commit: Each node generates a salt + bid, hashes it, and publishes only the commitment.
+- Reveal: After `COMMIT_DURATION` has passed, each node independently enters the reveal phase and publishes its original bid and salt.
+- Verify: Once  `REVEAL_DURATION` is over, all nodes independently verify the revealed values by checking if hash(bid + salt) matches the original commitment, and then determine the winner.
 
 
 ### 🏆 Winner Determination
