@@ -119,14 +119,35 @@ git clone https://github.com/Othentic-Labs/avs-examples.git
 cd liveliness-avs-example
 ```
 
-3. Create and populate `.env` and `.env.operator` files
+3. Deploy the LivelinessRegistry Contract: To use hooks, deploy an instance of the LivelinessRegistry contract by navigating to the contracts directory. 
+
+```
+# Either source .env or replace variables in command
+cd contracts/
+forge install
+
+# Populate .env file
+source .env
+forge script LivelinessRegistryDeploy \
+--rpc-url $L2_RPC \
+--private-key $PRIVATE_KEY \
+--broadcast -vvvv \
+--verify \
+--etherscan-api-key $L2_ETHERSCAN_API_KEY \
+--chain $L2_CHAIN \
+--verifier-url $L2_VERIFIER_URL \
+--sig="run(address)" \
+$ATTESTATION_CENTER_ADDRESS
+```
+
+4. Once the contract is deployed, return to the root of the repository and create and populate `.env` and `.env.operator` files
  (Refer to .env.example for required fields)
 
-4. Run script to register Operators endpoints to the livelinessRegistry 
+5. Run script to register Operators endpoints to the livelinessRegistry.
 ```
 ./register_liveliness.sh
 ```
-5. Start the network
+6. Start the AVS network
 ```
 docker-compose up --build
 ```
