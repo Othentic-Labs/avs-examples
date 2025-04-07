@@ -17,9 +17,9 @@ $$    $$/   $$  $$/ $$ |  $$ |$$       |$$ |  $$ |  $$  $$/ $$ |$$       |
  */
 
 import {Script, console} from "forge-std/Script.sol";
-import { IAttestationCenter } from "@othentic/contracts/src/NetworkManagement/L2/interfaces/IAttestationCenter.sol";
-import { IAvsLogic } from "@othentic/contracts/src/NetworkManagement/L2/interfaces/IAvsLogic.sol";
-import { LivelinessRegistry } from 'src/LivelinessRegistry.sol';
+import { IAttestationCenter } from "../src/interfaces/IAttestationCenter.sol";
+import { IAvsLogic } from "../src/interfaces/IAvsLogic.sol";
+import { LivelinessRegistry } from '../src/LivelinessRegistry.sol';
 
 // How to:
 // Either `source ../../.env` or replace variables in command.
@@ -33,6 +33,6 @@ contract LivelinessRegistryDeploy is Script {
         vm.startBroadcast();
         console.log("me: ", msg.sender);
         LivelinessRegistry livelinessRegistry = new LivelinessRegistry(IAttestationCenter(attestationCenter));
-        IAttestationCenter(attestationCenter).setAvsLogic(IAvsLogic(address(livelinessRegistry)));
+        IAttestationCenter(attestationCenter).setAvsLogic(address(livelinessRegistry));
     }
 }

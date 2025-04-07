@@ -7,5 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "common_liveliness": "../Common_Liveliness",
+    "ethers": "^6.12.1",
+    "express": "^4.18.1",
+    "dotenv": "^16.0.1"
+  }
 }

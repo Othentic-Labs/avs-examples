@@ -4,8 +4,8 @@ pragma solidity ^0.8.20;
 import { Test, console } from "forge-std/Test.sol";
 import { CommonBase } from "forge-std/Base.sol";
 import { StdCheats } from "forge-std/StdCheats.sol";
-import { IAttestationCenter } from "@othentic/contracts/src/NetworkManagement/L2/interfaces/IAttestationCenter.sol";
-import { IAvsLogic } from "@othentic/contracts/src/NetworkManagement/L2/interfaces/IAvsLogic.sol";
+import { IAttestationCenter } from "../src/interfaces/IAttestationCenter.sol";
+import { IAvsLogic } from "../src/interfaces/IAvsLogic.sol";
 import { ExposedLivelinessRegistry } from "test/exposes/ExposedLivelinessRegistry.sol";
 
 contract Shared is CommonBase, StdCheats {

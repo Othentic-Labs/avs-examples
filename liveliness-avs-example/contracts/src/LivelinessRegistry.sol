@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity >=0.8.20;
 
-import { IAttestationCenter } from "@othentic/contracts/src/NetworkManagement/L2/interfaces/IAttestationCenter.sol";
-import { IAvsLogic } from "@othentic/contracts/src/NetworkManagement/L2/interfaces/IAvsLogic.sol";
-import { ILivelinessRegistry } from "src/interfaces/ILivelinessRegistry.sol";
+import { IAttestationCenter } from "./interfaces/IAttestationCenter.sol";
+import { IAvsLogic } from "./interfaces/IAvsLogic.sol";
+import { ILivelinessRegistry } from "./interfaces/ILivelinessRegistry.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract LivelinessRegistry is ILivelinessRegistry, IAvsLogic {

@@ -12,4 +12,4 @@
 	url = https://github.com/openzeppelin/openzeppelin-contracts
 [submodule "liveliness-avs-example/contracts/lib/contracts"]
 	path = liveliness-avs-example/contracts/lib/contracts
-	url = https://github.com/Othentic-Labs/contracts
+	url = https://github.com/othentic/contracts

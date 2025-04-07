@@ -17,7 +17,7 @@ $$    $$/   $$  $$/ $$ |  $$ |$$       |$$ |  $$ |  $$  $$/ $$ |$$       |
  */
 
 import {Script, console} from "forge-std/Script.sol";
-import { IAttestationCenter } from "@othentic/contracts/src/NetworkManagement/L2/interfaces/IAttestationCenter.sol";
+import { IAttestationCenter } from "../src/interfaces/IAttestationCenter.sol";
 import { ILivelinessRegistry } from 'src/interfaces/ILivelinessRegistry.sol';
 
 // How to:
@@ -29,8 +29,9 @@ contract SignInLivelinessRegistry is Script {
 
     function run(address attestationCenter, string memory endpoint) public {
         vm.startBroadcast();
-        
-        ILivelinessRegistry livelinessRegistry = ILivelinessRegistry(address(IAttestationCenter(attestationCenter).avsLogic()));
+
+        IAttestationCenter attestationCenterContract = IAttestationCenter(attestationCenter);
+        ILivelinessRegistry livelinessRegistry = ILivelinessRegistry(attestationCenterContract.avsLogic());
         (uint256 operatorIndex,,) = livelinessRegistry.registrations(msg.sender);
         if (operatorIndex == 0) {
             livelinessRegistry.register(endpoint);

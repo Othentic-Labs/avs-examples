@@ -5,7 +5,7 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 cd $SCRIPTPATH
 
-source ../.env
+source .env
 
 VALIDATION_ENDPOINT1=http://10.8.0.2:8545
 VALIDATION_ENDPOINT2=http://10.8.0.3:8545
