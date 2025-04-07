@@ -16,9 +16,9 @@ services:
       p2p:
         ipv4_address: 10.8.0.69
   execution-service:
-    image: liveliness-avs/execution-service
+    image: execution-service
     build:
-      context: ./liveliness-avs-example
+      context: ./Execution_Service
       dockerfile: ./Dockerfile
       args:
         - PACKAGE_NAME=Execution_Service

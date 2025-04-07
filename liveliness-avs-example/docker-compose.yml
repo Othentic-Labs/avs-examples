@@ -89,7 +89,7 @@ services:
         ipv4_address: 10.8.0.202
   validation-service:
     build:
-      context: ./liveliness-avs-example
+      context: ./Validation_Service
       dockerfile: ./Dockerfile
       args:
         - PACKAGE_NAME=Validation_Service
@@ -100,7 +100,7 @@ services:
         ipv4_address: 10.8.0.42
   execution-service:
     build:
-      context: ./liveliness-avs-example
+      context: ./Execution_Service
       dockerfile: ./Dockerfile
       args:
         - PACKAGE_NAME=Execution_Service

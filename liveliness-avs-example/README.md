@@ -143,10 +143,13 @@ $ATTESTATION_CENTER_ADDRESS
 4. Once the contract is deployed, return to the root of the repository and create and populate `.env` and `.env.operator` files
  (Refer to .env.example for required fields)
 
-5. Run script to register Operators endpoints to the livelinessRegistry.
+5. Run script to register Operators endpoints to the livelinessRegistry. Make sure to have required funds in the the Operator Addresses to register to the livenessRegistry contract.
 ```
 ./register_liveliness.sh
 ```
+
+https://amoy.polygonscan.com/tx/0xaba6cc01e21d1ad4331a57fcf0b2c0a4fa2e15a8d7f4e94a641010d77cd491d0#eventlog
+
 6. Start the AVS network
 ```
 docker-compose up --build
