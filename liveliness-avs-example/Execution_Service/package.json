@@ -9,9 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "common_liveliness": "../Common_Liveliness",
     "ethers": "^6.12.1",
     "express": "^4.18.1",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "axios": "^1.1.3",
+    "cors": "^2.8.5",
+    "fs": "^0.0.1-security",
+    "nodemon": "^3.1.0",
+    "@pinata/sdk": "^2.1.0"
   }
 }

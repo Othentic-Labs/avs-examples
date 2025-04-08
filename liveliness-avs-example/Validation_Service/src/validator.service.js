@@ -1,6 +1,6 @@
 require('dotenv').config();
-const dalService = require("./dal.service");
-const { healthcheckService } = require("common_liveliness");
+const  dalService = require('./dal.service');
+const healthcheckService = require("./liveliness/healthcheck.service");
 const { ethers } = require('ethers');
 
 // Instead of a task each block, the task happens every EPOCH of blocks.
@@ -9,10 +9,12 @@ const EPOCH = 10;
 
 let l2Rpc;
 let attestationCenterAddress;
+let rpcBaseAddress
 
 function init() {
   l2Rpc = process.env.L2_RPC;
   attestationCenterAddress = process.env.ATTESTATION_CENTER_ADDRESS;
+  rpcBaseAddress = process.env.OTHENTIC_CLIENT_RPC_ADDRESS;
 }
 
 /**
@@ -86,7 +88,7 @@ async function validate(proofOfTask, data) {
     }
   } else {
     console.debug("isValid is false, performing healthcheck on operator: ", { chosenOperator, blockNumber, blockHash});
-    const { isValid: isValidCheck } = await healthcheckService.healthcheckOperator(chosenOperator.endpoint, blockNumber, blockHash);
+    const { isValid: isValidCheck } = await healthcheckService.healthcheckOperator(chosenOperator.endpoint, blockNumber, blockHash, rpcBaseAddress);
     if (isValidCheck === null) {
       throw new Error("Error performing healthcheck on operator: ", chosenOperator);
     }

@@ -4,7 +4,7 @@ const PORT = process.env.port || process.env.PORT || 4003
 const dalService = require("./src/dal.service");
 const healthcheckService = require("./src/healthcheck.service");
 const taskService = require("./src/task.service");
-const util = require("common_liveliness").util;
+const util = require("./src/liveliness/util");
 
 dalService.init();
 healthcheckService.init();

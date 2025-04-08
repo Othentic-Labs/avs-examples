@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 const { ethers } = require('ethers');
-const dalService = require('./dal.service');
-const { healthcheckService } = require('common_liveliness');
+const dalService = require('./liveliness/dal.service');
+const  healthcheckService = require('./liveliness/healthcheck.service');
 
 let rpcBaseAddress='';
 let l2Rpc='';
@@ -28,7 +28,7 @@ async function performHealthcheck(block) {
     }
   );
 
-  const healthcheckResult = await healthcheckService.healthcheckOperator(chosenOperator.endpoint, blockNumber, blockHash);
+  const healthcheckResult = await healthcheckService.healthcheckOperator(chosenOperator.endpoint, blockNumber, blockHash, rpcBaseAddress);
   if (healthcheckResult === null) {
     throw new Error("Error performing healthcheck");
   }

@@ -7,7 +7,7 @@ const { ethers } = require("ethers");
 /**
  * sends health check request and also validates it using validateHealthcheckResponse
  */
-async function healthcheckOperator(endpoint, blockNumber, blockHash) {
+async function healthcheckOperator(endpoint, blockNumber, blockHash, rpcBaseAddress) {
     let response = null;
     let isValid = false;
     const jsonRpcBody = {
@@ -17,7 +17,10 @@ async function healthcheckOperator(endpoint, blockNumber, blockHash) {
     };
   
     try {
-      const provider = new ethers.JsonRpcProvider(endpoint);
+      const ping = await axios.get(`${endpoint}/healthcheck`);
+      console.log("Basic /healthcheck GET returned:", ping.data);
+      
+      const provider = new ethers.JsonRpcProvider(rpcBaseAddress);
       response = await provider.send(jsonRpcBody.method, jsonRpcBody.params);
       console.debug("healthcheckOperator: API response:", response);
   

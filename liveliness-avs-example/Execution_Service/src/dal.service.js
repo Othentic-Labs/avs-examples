@@ -2,7 +2,7 @@ require('dotenv').config();
 const pinataSDK = require("@pinata/sdk");
 const { ethers } = require('ethers');
 // this dalService is common DAL functionallity that is shared between Execution and Validation Service
-const { dalService } = require('common_liveliness');
+const { dalService } = require('./liveliness/dal.service');
 
 let pinataApiKey='';
 let pinataSecretApiKey='';
@@ -13,7 +13,7 @@ function init() {
   pinataApiKey = process.env.PINATA_API_KEY;
   pinataSecretApiKey = process.env.PINATA_SECRET_API_KEY;
   rpcBaseAddress = process.env.OTHENTIC_CLIENT_RPC_ADDRESS;
-  privateKey = process.env.PRIVATE_KEY;
+  privateKey = process.env.PRIVATE_KEY_PERFORMER;
 }
 
 async function sendTask(proofOfTask, data, taskDefinitionId) {

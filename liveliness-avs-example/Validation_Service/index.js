@@ -3,7 +3,7 @@ const app = require("./configs/app.config")
 const PORT = process.env.port || process.env.PORT || 4002
 const dalService = require("./src/dal.service");
 const validatorService = require("./src/validator.service");
-const util = require("common_liveliness").util;
+const util = require("./src/liveliness/util");
 
 dalService.init();
 validatorService.init();

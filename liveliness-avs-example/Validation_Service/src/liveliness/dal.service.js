@@ -4,6 +4,8 @@ const ATTESTATION_CENTER_ABI = [
     'function getOperatorPaymentDetail(uint) public view returns (address, uint, uint, uint8)',
     'function numOfOperators() public view returns (uint)',
     'function avsLogic() public view returns (address)',
+    `function getActiveOperatorsDetails() view returns (tuple(address operator, uint256 operatorId, uint256 votingPower)[])`
+    
 ];
 
 const LIVELINESS_REGISTRY_ABI = [
@@ -14,6 +16,12 @@ async function getOperatorsLength(blockNumber, { attestationCenterAddress, provi
     const attestationCenterContract = new ethers.Contract(attestationCenterAddress, ATTESTATION_CENTER_ABI, provider);
     return await attestationCenterContract.numOfOperators({ blockTag: blockNumber });
 }
+
+async function getActiveOperators(blockNumber, { attestationCenterAddress, provider }) {
+    const attestationCenterContract = new ethers.Contract(attestationCenterAddress, ATTESTATION_CENTER_ABI, provider);
+    return await attestationCenterContract.getActiveOperatorsDetails({ blockTag: blockNumber });
+}
+
 
 async function getOperator(operatorIndex, blockNumber, { attestationCenterAddress, provider } ) {
     const attestationCenterContract = new ethers.Contract(attestationCenterAddress, ATTESTATION_CENTER_ABI, provider);
@@ -26,11 +34,10 @@ async function getOperator(operatorIndex, blockNumber, { attestationCenterAddres
 }
 
 async function getChosenOperator(blockHash, blockNumber, { attestationCenterAddress, provider }) {
-    const operatorsLength = await getOperatorsLength(blockNumber, { attestationCenterAddress, provider });
-    // NOTE: there is slight modulo bias but assumes number of operators is small enough it doesn't matter
-    // NOTE: maybe should use RANDAO instead of blockhash since miner can manipulate blockhash
-    const chosenOperatorIndex = (BigInt(blockHash) % BigInt(operatorsLength)) + 1n;
-    return await getOperator(chosenOperatorIndex, blockNumber, { attestationCenterAddress, provider });
+    const operators = await getActiveOperators(blockNumber ,{ attestationCenterAddress, provider });
+    const numOfActiveOperators = BigInt(operators.length);
+    const selectedIndex = BigInt(blockNumber) % numOfActiveOperators;
+    return await getOperator(selectedIndex, blockNumber, { attestationCenterAddress, provider });
 }
 
 module.exports = {
