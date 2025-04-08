@@ -140,7 +140,7 @@ forge script LivelinessRegistryDeploy \
 $ATTESTATION_CENTER_ADDRESS
 ```
 
-4. Once the contract is deployed, return to the root of the repository and create and populate `.env` and `.env.operator` files
+4. Once the contract is deployed, return to the root of the repository and create and populate `.env` and file
  (Refer to .env.example for required fields)
 
 5. Run script to register Operators endpoints to the livelinessRegistry. Make sure to have required funds in the the Operator Addresses to register to the livenessRegistry contract.
@@ -162,12 +162,29 @@ docker-compose.yml
 - 3 Attester nodes
 - Validation Service
 - Execution Service
-- 1 External Attester - uses Dockerfile Operator, .env.operator
-- 1 External Validation Service - uses Dockerfile Operator, .env.operator
 
 docker-compose.aggregator.yml
 - Aggregator node
 - Execution Service
+
+7. After submitting tasks on-chain, you can track the operator’s liveness score using the following script:
+```
+const livenessRegistryContractAbi = [
+    {
+    name: 'getLivelinessScore',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [{ name: '_operator', type: 'address' }],
+    outputs: [{ type: 'uint256' }],
+    },
+];
+const data = await publicClient.readContract({
+    address: '0xdAda03b7bae500F9AF8C32210BCA58Be42A84E64', // Liveness Registry contract
+    abi: livenessRegistryContractAbi,
+    functionName: 'getLivelinessScore',
+    args: [getAddress('0x65254a5d85B4Ce68833dc274b8119AE22f5eA18b')]
+}) 
+```
 
 ### Updating the Othentic node version
 To update the `othentic-cli` inside the docker images to the latest version, you

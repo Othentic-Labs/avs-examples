@@ -71,29 +71,7 @@ services:
     networks:
       p2p:
         ipv4_address: 10.8.0.4
-  # external-attester:
-  #   <<: *othentic-cli
-  #   build:
-  #     dockerfile: ./Dockerfile.operator
-  #   env_file:
-  #     - .env.operator
-  #   command: ["node",
-  #    "attester",
-  #    "/ip4/10.8.0.69/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}",
-  #    "--avs-webapi", "http://10.8.0.202", "--json-rpc"] 
-  #   networks:
-  #     p2p:
-  #       ipv4_address: 10.8.0.201
-  # external-validation-service:
-  #   build:
-  #     context: .
-  #     dockerfile: ./Dockerfile.operator
-  #   env_file: 
-  #     - .env.operator
-  #   command: ["avs-webapi"]
-  #   networks:
-  #     p2p:
-  #       ipv4_address: 10.8.0.202
+
   validation-service:
     build:
       context: ./Validation_Service

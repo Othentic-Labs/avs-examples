@@ -17,9 +17,6 @@ async function healthcheckOperator(endpoint, blockNumber, blockHash, rpcBaseAddr
     };
   
     try {
-      const ping = await axios.get(`${endpoint}/healthcheck`);
-      console.log("Basic /healthcheck GET returned:", ping.data);
-      
       const provider = new ethers.JsonRpcProvider(rpcBaseAddress);
       response = await provider.send(jsonRpcBody.method, jsonRpcBody.params);
       console.debug("healthcheckOperator: API response:", response);

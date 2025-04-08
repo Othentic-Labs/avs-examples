@@ -1,5 +1,4 @@
 const { ethers } = require("ethers");
-const axios = require("axios");
 /**
  * This file contains shared healthcheck functionalitiy for both performer and operators.
  */
@@ -17,11 +16,7 @@ async function healthcheckOperator(endpoint, blockNumber, blockHash, rpcBaseAddr
       params: [blockNumber]
     };
   
-    try {
-      // // Optional: basic HTTP GET to ensure endpoint is up
-      const ping = await axios.get(`${endpoint}/healthcheck`);
-      console.log("Basic /healthcheck GET returned:", ping.data);
-    
+    try {  
       const provider = new ethers.JsonRpcProvider(rpcBaseAddress);
       response = await provider.send(jsonRpcBody.method, jsonRpcBody.params);
       console.debug("healthcheckOperator: API response:", response);
