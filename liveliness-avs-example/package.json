@@ -1,0 +1,12 @@
+{
+  "name": "liveliness-avs-external",
+  "version": "1.0.0",
+  "description": "External services for Liveliness AVS",
+  "main": "index.js",
+  "dependencies": {
+    "@othentic/othentic-cli": "latest",
+  },
+  "scripts": {
+    "start": "othentic-cli"
+  }
+} 

@@ -1,0 +1,5 @@
+@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
+@othentic/contracts/=lib/contracts/
+forge-std/=lib/forge-std/src/
+src=src
+test=test
