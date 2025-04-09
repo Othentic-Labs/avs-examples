@@ -14,7 +14,6 @@ const REVEAL_DURATION = 10000;
 const AUCTION_START = "auction/start";
 const AUCTION_BID_COMMIT = "auction/bid_commit";
 const AUCTION_BID_REVEAL = "auction/bid_reveal";
-const AUCTION_RESULT = "auction/result";
 
 const router = Router()
 
@@ -64,10 +63,30 @@ async function determineWinner() {
     }
 
     if (winnerNodeId) {
-        await publishTask(AUCTION_RESULT, { winnerNodeId, highestBid });
         console.log(`[RESULT] Winner: ${winnerNodeId} with bid: ${highestBid}`);
+        
+        // If current node is the winner, execute the task
+        if (winnerNodeId === nodeAccount.address) {
+            console.log(`[EXECUTION] This node won the auction. Executing task...`);
+            await executeTask();
+        }
     } else {
         console.log("[RESULT] No valid bids found");
+    }
+}
+
+async function executeTask() {
+    try {
+        const originalRpcUrl = process.env.OTHENTIC_CLIENT_RPC_ADDRESS; 
+        const updatedRpcUrl = new URL(originalRpcUrl);
+        updatedRpcUrl.port = "4003"; 
+
+        await axios.post(`http://execution-service:4003/task/execute`, {}, {
+            headers: { "Content-Type": "application/json" }
+        });
+        console.log(`[EXECUTION] Task executed successfully`);
+    } catch (error) {
+        console.log(`[EXECUTION] Error executing task:`, error);
     }
 }
 
@@ -131,25 +150,6 @@ router.post("/message", async (req, res) => {
         case AUCTION_BID_REVEAL:
             console.log(`[Reveal Received] Node: ${parsedData.nodeId}, Bid: ${parsedData.bid}, Salt: ${parsedData.salt}`);
             revealedBids.set(parsedData.nodeId, { bid: parsedData.bid, salt: parsedData.salt });
-            break;
-        case AUCTION_RESULT:
-            console.log(`[Winner declared] Node: ${parsedData.winnerNodeId} with Bid: ${parsedData.highestBid}`);
-            if(parsedData.winnerNodeId === nodeAccount.address) {
-
-                try {
-                    const originalRpcUrl = process.env.OTHENTIC_CLIENT_RPC_ADDRESS; 
-                    const updatedRpcUrl = new URL(originalRpcUrl);
-                    updatedRpcUrl.port = "4003"; 
-
-                    await axios.post(`http://execution-service:4003/task/execute`, {}, {
-                        headers: { "Content-Type": "application/json" }
-                    });
-                  
-                } catch (error) {
-                    console.log(error);
-                }
-
-            }
             break;
     }
 })
