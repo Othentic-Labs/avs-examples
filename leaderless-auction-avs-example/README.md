@@ -34,9 +34,8 @@ The Leaderless Auction AVS Example showcases how to implement a leaderless aucti
 |---------------|------------------------|-----------------------------------------------------------------------------|
 | Start         | `auction/start`        | Triggers auction with an ID and timestamp                                  |
 | Commit Phase  | `auction/bid_commit`   | Nodes commit a hash of their bid + salt                                    |
-| Reveal Phase  | `auction/bid_reveal`   | Nodes reveal original bid + salt                                           |
-| Result        | `auction/result`       | All nodes independently determine and publish the winner                   |
-| Execute       | Internal HTTP `/task/execute` | If current node wins, it performs an oracle task and publishes results to IPFS |
+| Reveal Phase  | `auction/bid_reveal`   | Nodes reveal original bid + salt, All nodes independently determine the winner|
+| Execute       | Internal HTTP `/task/execute` | If current node wins, it performs the task and publishes results to IPFS |
 
 ### 🧩 Commit-Reveal Mechanism
 
