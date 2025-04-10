@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s  # How often Prometheus will scrape targets
+
+scrape_configs:
+  - job_name: 'aggregator-node'
+    scrape_interval: 5s   # Frequency for scraping this specific job
+    metrics_path: '/metrics'  # Aggregator node metrics endpoint
+    scheme: http
+    static_configs:
+      - targets: ['aggregator:6060']  # Aggregator node service name and port in Docker Composer
