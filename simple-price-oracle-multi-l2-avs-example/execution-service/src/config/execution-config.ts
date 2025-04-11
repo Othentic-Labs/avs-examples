@@ -8,6 +8,7 @@ export interface ExecutionConfig {
     ipfs: IpfsPinataConfig;
     rpcBaseAddress: string;
     performer: IPerformerConfig;
+    targetChainId: string;
 }
 
 export interface IPerformerConfig {

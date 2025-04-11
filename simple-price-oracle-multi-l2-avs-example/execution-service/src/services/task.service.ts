@@ -25,19 +25,27 @@ export class TaskService {
         const messageHash: string = ethers.keccak256(message);
         const sig: string = wallet.signingKey.sign(messageHash).serialized;
 
-        const jsonRpcBody = {
-            jsonrpc: "2.0",
-            method: "sendTask",
-            params: [proofOfTask, hexData, taskDefinitionId, performerAddress, sig],
-        };
+        
+        const targetChainIds = (configService.config.targetChainId ?? "")
+        .split(",")
+        .map((id) => parseInt(id.trim()))
+        .filter((id) => !isNaN(id));
 
-        try {
-            const provider: JsonRpcProvider = new ethers.JsonRpcProvider(this.rpcBaseAddress);
-            const response: unknown = await provider.send(jsonRpcBody.method, jsonRpcBody.params);
-            console.log("API response:", response);
-        } catch (error) {
-            console.error("Error making API request:", error);
-        }
+        const provider: JsonRpcProvider = new ethers.JsonRpcProvider(this.rpcBaseAddress);
+        await Promise.all(targetChainIds.map(async (chainId) => {
+            const jsonRpcBody = {
+                jsonrpc: "2.0",
+                method: "sendTask",
+                params: [proofOfTask, hexData, taskDefinitionId, performerAddress, sig, "ecdsa", chainId],
+            };
+    
+            try {
+                const response = await provider.send(jsonRpcBody.method, jsonRpcBody.params);
+                console.log(`Response for chainId ${chainId}:`, response);
+            } catch (error) {
+                console.error(`Error on chainId ${chainId}:`, error);
+            }
+        }));
     }
 }
 
