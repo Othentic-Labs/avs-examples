@@ -19,9 +19,9 @@ othentic-cli --version
 ## ⚙️ Usage
 
 ### 1. Deploy AVS Contracts on Multi-L2
-Use the quick start guide to set up your AVS. When deploying, include all L2 chain names you want to target (as per the supported chains).
+Use the [quick start](https://docs.othentic.xyz/main/avs-framework/quick-start) guide to set up your AVS. When deploying, include all L2 chain names as per the [Supported chains](https://docs.othentic.xyz/main/avs-framework/supported-networks).
 
-In the example below, we deploy to Amoy and Base-Sepolia:
+In the example below, we deploy to `amoy` and `base-Sepolia`:
 
 ```bash
 othentic-cli network deploy \
@@ -30,12 +30,12 @@ othentic-cli network deploy \
   --rewards-token 0x94373a4919B3240D86eA41593D5eBa789FEF3848 \
   --l1-initial-deposit 1000000000000000000 \
   --l2-initial-deposit 2000000000000000000 \
-  --name test-avs-name10
+  --name test-avs-name
 ```
 
 ### 2. Configure the .env File
 
-Refer to .env.example and ensure the following variables are set correctly:
+Refer to `.env.example` and ensure the following variables are set correctly:
 
 ```bash
 L2_CHAIN=80002,84532
@@ -44,12 +44,13 @@ ATTESTATION_CENTER_ADDRESS=80002@0x968aA85F556ECf9164D7Dfb00a3b404b4eD6dEc0,8453
 TARGET_CHAIN_ID=84532
 ```
 
-ℹ️ TARGET_CHAIN_ID determines which L2 chain(s) your AVS tasks should be submitted to.
+ℹ️ `TARGET_CHAIN_ID` determines which L2 chain(s) your AVS tasks should be submitted to.
 You can specify one chain or a comma-separated list of chain IDs (e.g., 84532,80002).
-The AVS will submit the task to each chain in the list.
+The AVS submits the task to every chain in the list by calling `sendTask` individually for each chain.
+
 
 ### 3. Update Docker Compose
-Open your docker-compose.yml file and update the flags `--l1-chain` and `--l2-chain`
+Open your `docker-compose.yml` file and update the flags `--l1-chain` and `--l2-chain`
 
 Ensure these values match the chain names you deployed on.
 
