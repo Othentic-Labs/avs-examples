@@ -17,7 +17,7 @@ export class ExecutionConfigService {
             performer: {
                 privateKey: process.env.PRIVATE_KEY_PERFORMER ?? "",
             },
-            targetChainId: parseInt(process.env.TARGET_CHAIN_ID ?? "0")
+            targetChainId: process.env.TARGET_CHAIN_ID ?? "0"
         };
     }
 }
