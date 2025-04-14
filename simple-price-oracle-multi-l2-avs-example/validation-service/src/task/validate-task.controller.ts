@@ -12,7 +12,7 @@ router.post("/validate", async (req: Request<any, any, ValidateRequestDto>, res:
     try {
         const result = await validatorService.validate(proofOfTask);
         console.log("Vote:", result ? "Approve" : "Not Approved");
-        res.status(HttpStatusCode.Ok).send({ validationResult: result });
+        res.status(HttpStatusCode.Ok).send({ data: result });
     } catch (error) {}
 });
 

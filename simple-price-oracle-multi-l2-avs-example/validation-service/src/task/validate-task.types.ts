@@ -3,5 +3,5 @@ export interface ValidateRequestDto {
 }
 
 export interface ValidateResponseDto {
-    validationResult: boolean;
+    data: boolean;
 }
