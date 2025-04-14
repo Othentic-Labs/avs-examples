@@ -30,6 +30,25 @@ The Leaderless Auction AVS Example showcases how to implement a leaderless aucti
 
 ### 🔁 Auction Lifecycle
 
+**Auction Initiation:** 
+When a task needs to be performed, an auction begins with a unique auction ID and timestamp.
+
+**Commit Phase:**
+Each node independently decides how much they're willing to "bid" for the right to perform the task
+Operator Nodes create a commitment by hashing their bid amount plus a random salt value. Only this hash (commitment) is published to the network, keeping actual bid values secret.
+
+**Reveal Phase:**
+After a set duration, nodes reveal their original bids and salt values
+All nodes can verify each commitment by recalculating hash(bid + salt) and comparing it to the previously published commitment.
+
+**Winner Determination:**
+Every node independently analyzes all valid bids and identifies the highest bidder. The highest bidder wins the right to perform the task
+No central authority needs to announce the winner - each node reaches the same conclusion independently.
+
+**Task Execution:**
+The winning node performs the specified task (like fetching price data).
+
+
 | Phase         | Message Type           | Description                                                                 |
 |---------------|------------------------|-----------------------------------------------------------------------------|
 | Start         | `auction/start`        | Triggers auction with an ID and timestamp                                  |
