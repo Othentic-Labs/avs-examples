@@ -41,12 +41,8 @@ Refer to `.env.example` and ensure the following variables are set correctly:
 L2_CHAIN=80002,84532
 L2_RPC=80002@https://rpc.ankr.com/polygon_amoy/,84532@https://rpc.ankr.com/base_sepolia/
 ATTESTATION_CENTER_ADDRESS=80002@0x968aA85F556ECf9164D7Dfb00a3b404b4eD6dEc0,84532@0x5F2b17764986Da7Fa0a8E96f81B3C8244116aB3F
-TARGET_CHAIN_ID=84532
 ```
 
-ℹ️ `TARGET_CHAIN_ID` determines which L2 chain(s) your AVS tasks should be submitted to.
-You can specify one chain or a comma-separated list of chain IDs (e.g., 84532,80002).
-The AVS submits the task to every chain in the list by calling `sendTask` individually for each chain.
 
 
 ### 3. Update Docker Compose
@@ -56,9 +52,13 @@ Ensure these values match the chain names you deployed on.
 
 ### 4. Run the Docker Containers & Trigger Task Execution
 
+ℹ️ `targetChainId` determines which L2 chain your AVS tasks should be submitted to, by default the task is submitted to the first L2 chain in the environmnet configuration.
+
 ```bash
 docker-compose up --build
-curl -X POST http://localhost:4003/task/execute
+curl -X POST http://localhost:4003/task/execute \
+  -H "Content-Type: application/json" \
+  -d '{"targetChainId": 84532}'
 ```
 This command will build and run your AVS across the configured L1 and L2 chains.
 
