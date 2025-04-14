@@ -1,6 +1,7 @@
 interface ExecuteRequestDto {
     taskDefinitionId?: number;
     fakePrice?: number;
+    targetChainId?: number;
 }
 
 interface ExecuteResponseDto {

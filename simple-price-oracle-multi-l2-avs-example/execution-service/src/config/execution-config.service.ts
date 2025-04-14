@@ -10,14 +10,13 @@ export class ExecutionConfigService {
                 baseURL: process.env.ORACLE_BASE_URL ?? `https://api.binance.com/api/v3/`,
             },
             ipfs: {
-                pinataApiKey: process.env.PINATA_API_KEY ?? "",
-                pinataSecretApiKey: process.env.PINATA_SECRET_API_KEY ?? "",
+                pinataApiKey: process.env.PINATA_API_KEY!,
+                pinataSecretApiKey: process.env.PINATA_SECRET_API_KEY!,
             },
-            rpcBaseAddress: process.env.OTHENTIC_CLIENT_RPC_ADDRESS ?? "",
+            rpcBaseAddress: process.env.OTHENTIC_CLIENT_RPC_ADDRESS!,
             performer: {
-                privateKey: process.env.PRIVATE_KEY_PERFORMER ?? "",
-            },
-            targetChainId: process.env.TARGET_CHAIN_ID ?? "0"
+                privateKey: process.env.PRIVATE_KEY_PERFORMER!,
+            }
         };
     }
 }

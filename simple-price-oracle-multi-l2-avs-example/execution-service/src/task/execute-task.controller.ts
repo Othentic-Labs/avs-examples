@@ -8,13 +8,14 @@ import { HttpStatusCode } from "axios";
 const router = Router();
 
 router.post("/execute", async (req: Request<any, any, ExecuteRequestDto>, res: Response<ExecuteResponseDto>) => {
-    let { taskDefinitionId, fakePrice } = req.body;
+    let { taskDefinitionId, fakePrice, targetChainId } = req.body;
 
     taskDefinitionId = Number(req.body.taskDefinitionId) || 0;
     console.log(`Executing task: ${taskDefinitionId}`);
 
     try {
         const fakePrice = Number(req.body.fakePrice) || undefined;
+        const targetChainId = Number(req.body.targetChainId) || undefined;
         let price = await oracleService.getPairMarketPrice("ETHUSDT");
 
         if (fakePrice) {
@@ -24,7 +25,7 @@ router.post("/execute", async (req: Request<any, any, ExecuteRequestDto>, res: R
         const cid = await ipfsService.publishJSONToIpfs({ price: price });
         const data = "hello";
 
-        await taskService.sendTask(cid, data, taskDefinitionId);
+        await taskService.sendTask(cid, data, taskDefinitionId, targetChainId);
 
         const response: ExecuteResponseDto = {
             message: "Task executed successfully",

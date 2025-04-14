@@ -14,7 +14,7 @@ services:
       "--json-rpc",
       "--l1-chain", "holesky",
       # Set the L2 chain
-      # "--l2-chain", "amoy,base-sepolia",
+      "--l2-chain", "amoy,base-sepolia",
       "--internal-tasks", "--sync-interval", "5400000",
     ]
     environment:
@@ -35,7 +35,7 @@ services:
       "http://10.8.0.42",
       "--l1-chain", "holesky",
       # Set the L2 chain 
-      # "--l2-chain", "amoy,base-sepolia",
+      "--l2-chain", "amoy,base-sepolia",
     ]
     environment:
       - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER1}
@@ -55,7 +55,7 @@ services:
       "http://10.8.0.42",
       "--l1-chain", "holesky",
       # Set the L2 chain 
-      # "--l2-chain", "amoy,base-sepolia",
+      "--l2-chain", "amoy,base-sepolia",
     ]
     environment:
       - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER2}
@@ -75,7 +75,7 @@ services:
       "http://10.8.0.42",
       "--l1-chain", "holesky",
       # Set the L2 chain 
-      # "--l2-chain", "amoy,base-sepolia",
+      "--l2-chain", "amoy,base-sepolia",
     ]
     environment:
       - PRIVATE_KEY=${PRIVATE_KEY_ATTESTER3}

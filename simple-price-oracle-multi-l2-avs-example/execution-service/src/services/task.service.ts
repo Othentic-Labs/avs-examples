@@ -12,7 +12,7 @@ export class TaskService {
         this.rpcBaseAddress = rpcBaseAddress;
     }
 
-    async sendTask(proofOfTask: string, data: string, taskDefinitionId: number): Promise<void> {
+    async sendTask(proofOfTask: string, data: string, taskDefinitionId: number, targetChainId?: number): Promise<void> {
         const wallet: Wallet = new ethers.Wallet(this.privateKey);
         const performerAddress: string = wallet.address;
 
@@ -25,27 +25,32 @@ export class TaskService {
         const messageHash: string = ethers.keccak256(message);
         const sig: string = wallet.signingKey.sign(messageHash).serialized;
 
-        
-        const targetChainIds = (configService.config.targetChainId ?? "")
-        .split(",")
-        .map((id) => parseInt(id.trim()))
-        .filter((id) => !isNaN(id));
-
         const provider: JsonRpcProvider = new ethers.JsonRpcProvider(this.rpcBaseAddress);
-        await Promise.all(targetChainIds.map(async (chainId) => {
-            const jsonRpcBody = {
-                jsonrpc: "2.0",
-                method: "sendTask",
-                params: [proofOfTask, hexData, taskDefinitionId, performerAddress, sig, "ecdsa", chainId],
-            };
+        const params: any[] = [
+            proofOfTask,
+            hexData,
+            taskDefinitionId,
+            performerAddress,
+            sig,
+        ];
     
-            try {
-                const response = await provider.send(jsonRpcBody.method, jsonRpcBody.params);
-                console.log(`Response for chainId ${chainId}:`, response);
-            } catch (error) {
-                console.error(`Error on chainId ${chainId}:`, error);
-            }
-        }));
+        if (targetChainId) {
+            params.push("ecdsa");
+            params.push(targetChainId);
+        }
+    
+        const jsonRpcBody = {
+            jsonrpc: "2.0",
+            method: "sendTask",
+            params,
+        };
+
+        try {
+            const response = await provider.send(jsonRpcBody.method, jsonRpcBody.params);
+            console.log(`Response for chainId ${targetChainId}:`, response);
+        } catch (error) {
+            console.error(`Error on chainId ${targetChainId}:`, error);
+        }
     }
 }
 
