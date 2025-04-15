@@ -22,3 +22,7 @@
 	path = liveness-avs-example
 	url = https://github.com/Othentic-Labs/liveness-avs-example
 	branch = main
+[submodule "uniswap-v4-hook-avs-example"]
+	path = uniswap-v4-hook-avs-example
+	url = https://github.com/Othentic-Labs/uniswap-v4-hook-avs-example
+	branch = main
