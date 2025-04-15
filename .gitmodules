@@ -2,7 +2,23 @@
 	path = simple-price-oracle-avs-js-example
 	url = https://github.com/Othentic-Labs/simple-price-oracle-avs-example
 	branch = main
+[submodule "simple-price-oracle-avs-go-example"]
+	path = simple-price-oracle-avs-go-example
+	url = https://github.com/Othentic-Labs/simple-price-oracle-avs-go-example
+	branch = main
+[submodule "simple-price-oracle-avs-rust-example"]
+	path = simple-price-oracle-avs-rust-example
+	url = https://github.com/Othentic-Labs/simple-price-oracle-avs-rust-example
+	branch = main
 [submodule "PRNG-avs-example"]
 	path = PRNG-avs-example
 	url = https://github.com/Othentic-Labs/PRNG-avs-example
+	branch = main
+[submodule "multi-l2-price-oracle-avs-example"]
+	path = multi-l2-price-oracle-avs-example
+	url = https://github.com/Othentic-Labs/multi-l2-price-oracle-avs-example
+	branch = main
+[submodule "liveness-avs-example"]
+	path = liveness-avs-example
+	url = https://github.com/Othentic-Labs/liveness-avs-example
 	branch = main
