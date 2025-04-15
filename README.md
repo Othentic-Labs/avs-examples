@@ -6,16 +6,16 @@ A curated list of AVS implementations to help you get started with the [Othentic
 
 ### Language-Specific AVS Examples
 
-| Language | Example | Description |
-|----------|---------|-------------|
-| **JavaScript** | [Simple Price Oracle AVS (JS)](https://github.com/Othentic-Labs/simple-price-oracle-avs-example) |A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to the Othentic Stack. |
-| **Go** | [Simple Price Oracle AVS (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example) | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
-| **Rust** | [Simple Price Oracle AVS (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example) | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
+| Name | Description |
+|-------------------------------|---------|
+| [Simple Price Oracle AVS (JS)](https://github.com/Othentic-Labs/simple-price-oracle-avs-example) |A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to the Othentic Stack. |
+| [Simple Price Oracle AVS (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example) | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
+| [Simple Price Oracle AVS (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example) | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
 
 ### Advanced AVS Examples
 
 | Name | Description |
-|--------------------------------|-------------|
+|------------------------------------|-------------|
 | [Multi Chain AVS (TS)](https://github.com/Othentic-Labs/multi-l2-price-oracle-avs-example) | Deploys AVS across **multiple L2 chains**, showcasing task submission and attestation, in a multi-chain context. |
 | [PRNG AVS](https://github.com/Othentic-Labs/PRNG-avs-example) | Showcases advanced CLI features like **leader election**, **custom task triggers**, and **hook execution**. Great for exploring full-stack AVS capabilities. |
 | [Uniswap V4 Hook AVS](https://github.com/Othentic-Labs/avs-examples/tree/main/uniswap-v4-hook-avs-example) | Uses Uniswap V4 **hooks** to dynamically adjust swap fees based on real-time market data—solves inefficiencies of static fee models. |
