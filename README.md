@@ -20,7 +20,7 @@ A curated list of AVS implementations to help you get started with the [Othentic
 | [PRNG](https://github.com/Othentic-Labs/PRNG-avs-example) | Showcases advanced CLI features like **[leader election](https://docs.othentic.xyz/main/avs-framework/othentic-consensus/leader-election)**, **[custom task triggers](https://docs.othentic.xyz/main/avs-framework/othentic-consensus/task-and-task-definitions#triggering-a-task)**, and **[hook execution](https://docs.othentic.xyz/main/avs-framework/smart-contracts/hooks/task-logic)**. Great for exploring full-stack AVS capabilities. |
 | [Uniswap V4 Hook](https://github.com/Othentic-Labs/avs-examples/tree/main/uniswap-v4-hook-avs-example) | Uses Uniswap V4 **hooks** to dynamically adjust swap fees based on real-time market data—solves inefficiencies of static fee models. |
 | [Leaderless Auction AVS](https://github.com/Othentic-Labs/avs-examples/tree/main/leaderless-auction-avs-example) | Implements a leaderless mechanism using an **auction-based protocol**. Instead of electing a leader, nodes participate in a commit-reveal scheme where they bid for task execution rights. |
-| [Liveness](https://github.com/Othentic-Labs/avs-examples/tree/main/liveliness-avs-example) | A shared AVS service that monitors operator **uptime and responsiveness** across the network. It introduces a **reputation system** and provides a mechanism for detecting and penalizing inactive operators. |
+| [Liveness](https://github.com/Othentic-Labs/avs-examples/tree/main/liveliness-avs-example) | An AVS that monitors operator **uptime and responsiveness** across the network. It introduces a **reputation system** and provides a mechanism for detecting and penalizing inactive operators. |
 
 
 ## Additional Examples
