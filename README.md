@@ -1,18 +1,18 @@
-## Othentic Stack Quickstart Examples
+## Quickstart
 
-A curated list of AVS implementations to help you get started with the [Othentic Stack](https://docs.othentic.xyz). These examples span across multiple programming languages and demonstrate both basic and advanced AVS features.
+A curated list of AVS implementations to help you get started with the [Othentic Stack](https://docs.othentic.xyz). These examples span across multiple programming languages and demonstrate both basic and advanced features.
 
 > 📚 [View Quickstart Guide →](https://docs.othentic.xyz/main/avs-framework/quick-start)
 
-### Language-Specific AVS Examples
+### Language-Specific Examples
 
 | Name | Description |
 |-------------------------------|---------|
-| [Simple Price Oracle AVS (JS)](https://github.com/Othentic-Labs/simple-price-oracle-avs-example) |A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to the Othentic Stack. |
-| [Simple Price Oracle AVS (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example) | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
-| [Simple Price Oracle AVS (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example) | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
+| [Oracle AVS (JS)](https://github.com/Othentic-Labs/simple-price-oracle-avs-example) |A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to the Othentic Stack. |
+| [Oracle AVS (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example) | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
+| [Oracle AVS (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example) | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
 
-### Advanced AVS Examples
+### Advanced Examples
 
 | Name | Description |
 |------------------------------------|-------------|
