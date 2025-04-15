@@ -1,29 +1,26 @@
-## [Quickstart Examples](https://docs.othentic.xyz/main/avs-framework/quick-start)
-A collection of examples designed to provide hands-on experience for integrating the Othentic Stack:
+## Othentic Stack Quickstart Examples
 
-[Simple Price Oracle AVS Example JS](https://github.com/Othentic-Labs/simple-price-oracle-avs-example)
+A curated list of AVS implementations to help you get started with the [Othentic Stack](https://docs.othentic.xyz). These examples span across multiple programming languages and demonstrate both basic and advanced AVS features.
 
-A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to Othentic Stack.
+> 📚 [View Quickstart Guide →](https://docs.othentic.xyz/main/avs-framework/quick-start)
 
+## Language-Specific AVS Examples
 
-[Simple Price Oracle AVS Example Go](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example)
+| Language | Example | Description |
+|----------|---------|-------------|
+| **JavaScript** | [Simple Price Oracle AVS (JS)](https://github.com/Othentic-Labs/simple-price-oracle-avs-example) |A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to the Othentic Stack. |
+| **Go** | [Simple Price Oracle AVS (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example) | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
+| **Rust** | [Simple Price Oracle AVS (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example) | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
 
-This example demonstrates how to implement a simple price oracle AVS in Go.
+## Advanced AVS Examples
 
-
-[Simple Price Oracle AVS Example Rust](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example)
-
-This example demonstrates how to implement a simple price oracle AVS in Rust.
-
-
-[PRNG AVS](https://github.com/Othentic-Labs/PRNG-avs-example)
-
-This example demonstrates all the advanced features of the CLI including leader election mechanism, Hooks Implementation, Custom Task Triggers and more.
-
-
-[Uniswap V4 Hook AVS Example](https://github.com/Othentic-Labs/avs-examples/tree/main/uniswap-v4-hook-avs-example)
-
-This example demonstrates how to utilize Uniswap V4 hooks to create dynamic fee AVS that addresses the inefficiencies of static fee models in swap contracts.
+| Name | Description |
+|--------------------------------|-------------|
+| [Multi Chain AVS (TS)](https://github.com/Othentic-Labs/multi-l2-price-oracle-avs-example) | Deploys AVS across **multiple L2 chains**, showcasing task submission and attestation, in a multi-chain context. |
+| [PRNG AVS](https://github.com/Othentic-Labs/PRNG-avs-example) | Showcases advanced CLI features like **leader election**, **custom task triggers**, and **hook execution**. Great for exploring full-stack AVS capabilities. |
+| [Uniswap V4 Hook AVS](https://github.com/Othentic-Labs/avs-examples/tree/main/uniswap-v4-hook-avs-example) | Uses Uniswap V4 **hooks** to dynamically adjust swap fees based on real-time market data—solves inefficiencies of static fee models. |
+| [Leaderless Auction AVS](https://github.com/Othentic-Labs/avs-examples/tree/main/leaderless-auction-avs-example) | Implements a leaderless mechanism using an **auction-based protocol**. Instead of electing a leader, nodes participate in a commit-reveal scheme where they bid for task execution rights. |
+| [Liveness AVS](https://github.com/Othentic-Labs/avs-examples/tree/main/liveliness-avs-example) | A shared AVS service that monitors operator **uptime and responsiveness** across the network. It introduces a **reputation system** and provides a mechanism for detecting and penalizing inactive operators. |
 
 
 ## Additional Examples
