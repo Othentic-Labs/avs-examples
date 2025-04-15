@@ -4,7 +4,7 @@ A curated list of AVS implementations to help you get started with the [Othentic
 
 > 📚 [View Quickstart Guide →](https://docs.othentic.xyz/main/avs-framework/quick-start)
 
-## Language-Specific AVS Examples
+### Language-Specific AVS Examples
 
 | Language | Example | Description |
 |----------|---------|-------------|
@@ -12,7 +12,7 @@ A curated list of AVS implementations to help you get started with the [Othentic
 | **Go** | [Simple Price Oracle AVS (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example) | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
 | **Rust** | [Simple Price Oracle AVS (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example) | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
 
-## Advanced AVS Examples
+### Advanced AVS Examples
 
 | Name | Description |
 |--------------------------------|-------------|
