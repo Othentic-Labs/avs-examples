@@ -6,11 +6,11 @@ A curated list of AVS implementations to help you get started with the [Othentic
 
 ### Language-Specific Examples
 
-| Name | Description |
-|-------------------------------|---------|
-| [Oracle (JS)](https://github.com/Othentic-Labs/simple-price-oracle-avs-example) |A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to the Othentic Stack. |
-| [Oracle (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example) | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
-| [Oracle (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example) | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
+| Name                                                                                                                                              | Description |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| [Oracle (JS)](https://github.com/Othentic-Labs/simple-price-oracle-avs-example)                                                                  | A quickstart repository demonstrating an Oracle AVS implementation in JavaScript. It uses IPFS to store proof-of-task data, providing a simple yet powerful example for developers new to the Othentic Stack. |
+| [Oracle (Go)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-go-example)                                        | A Go-based Oracle AVS showcasing Othentic integration with clean concurrency and validation logic. |
+| [Oracle (Rust)](https://github.com/Othentic-Labs/avs-examples/tree/main/simple-price-oracle-avs-rust-example)                                    | A Rust-based implementation of a simple Oracle AVS with strong type safety and performance. |
 
 ### Advanced Examples
 
