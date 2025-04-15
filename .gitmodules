@@ -26,3 +26,7 @@
 	path = uniswap-v4-hook-avs-example
 	url = https://github.com/Othentic-Labs/uniswap-v4-hook-avs-example
 	branch = main
+[submodule "leaderless-auction-avs-example"]
+	path = leaderless-auction-avs-example
+	url = https://github.com/Othentic-Labs/leaderless-auction-avs-example
+	branch = main
