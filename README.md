@@ -21,7 +21,6 @@ A curated list of AVS implementations to help you get started with the [Othentic
 | [Uniswap V4 Hook](https://github.com/Othentic-Labs/uniswap-v4-hook-avs-example) | Uses Uniswap V4 **hooks** to dynamically adjust swap fees based on real-time market data—solves inefficiencies of static fee models. |
 | [Leaderless Auction](https://github.com/Othentic-Labs/leaderless-auction-avs-example) | Implements a leaderless mechanism using an **auction-based protocol**. Instead of electing a leader, nodes participate in a commit-reveal scheme where they bid for task execution rights. |
 | [Liveness](https://github.com/Othentic-Labs/liveness-avs-example) | An AVS that monitors operator **uptime and responsiveness** across the network. It introduces a **reputation system** and provides a mechanism for detecting and penalizing inactive operators. |
-| [MCP AVS Example](https://github.com/Othentic-Labs/avs-mcp-example) | Demonstrates **Model Context Protocol (MCP)** support in AVSs. This example enables agent-compatible task execution, making AVS accessible via AI agents |
 
 ### Extensions
 
