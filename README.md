@@ -23,6 +23,13 @@ A curated list of AVS implementations to help you get started with the [Othentic
 | [Liveness](https://github.com/Othentic-Labs/liveness-avs-example) | An AVS that monitors operator **uptime and responsiveness** across the network. It introduces a **reputation system** and provides a mechanism for detecting and penalizing inactive operators. |
 | [MCP AVS Example](https://github.com/Othentic-Labs/avs-mcp-example) | Demonstrates **Model Context Protocol (MCP)** support in AVSs. This example enables agent-compatible task execution, making AVS accessible via AI agents |
 
+### Extensions
+
+| Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| [MCP AVS Example](https://github.com/Othentic-Labs/avs-mcp-example) | Demonstrates **Model Context Protocol (MCP)** support in AVSs. This example enables agent-compatible task execution, making AVS accessible via AI agents |
+| [TLS AVS Example](https://github.com/Othentic-Labs/avs-tls-example) | An example demonstrating the use of **TLSNotary** to validate an MPC-TLS session and submit verifiable tasks to the AVS network.|
+
 ## Additional Examples
 The following examples are not official samples nor actively maintained, and some may be outdated.
 
