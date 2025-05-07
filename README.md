@@ -18,16 +18,18 @@ A curated list of AVS implementations to help you get started with the [Othentic
 |------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | [Multi Chain AVS (TS)](https://github.com/Othentic-Labs/multi-l2-price-oracle-avs-example) | Deploys AVS across **[multiple L2 chains](https://docs.othentic.xyz/main/avs-framework/explainers/multi-l2s)**, showcasing task submission and attestation, in a multi-chain context. |
 | [PRNG](https://github.com/Othentic-Labs/PRNG-avs-example) | Showcases advanced CLI features like **[leader election](https://docs.othentic.xyz/main/avs-framework/othentic-consensus/leader-election)**, **[custom task triggers](https://docs.othentic.xyz/main/avs-framework/othentic-consensus/task-and-task-definitions#triggering-a-task)**, and **[hook execution](https://docs.othentic.xyz/main/avs-framework/smart-contracts/hooks/task-logic)**. Great for exploring full-stack AVS capabilities. |
-| [Uniswap V4 Hook](https://github.com/Othentic-Labs/uniswap-v4-hook-avs-example) | Uses Uniswap V4 **hooks** to dynamically adjust swap fees based on real-time market data—solves inefficiencies of static fee models. |
+
 | [Leaderless Auction](https://github.com/Othentic-Labs/leaderless-auction-avs-example) | Implements a leaderless mechanism using an **auction-based protocol**. Instead of electing a leader, nodes participate in a commit-reveal scheme where they bid for task execution rights. |
-| [Liveness](https://github.com/Othentic-Labs/liveness-avs-example) | An AVS that monitors operator **uptime and responsiveness** across the network. It introduces a **reputation system** and provides a mechanism for detecting and penalizing inactive operators. |
+
 
 ### Extensions
 
 | Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | [MCP AVS Example](https://github.com/Othentic-Labs/avs-mcp-example) | Demonstrates **Model Context Protocol (MCP)** support in AVSs. This example enables agent-compatible task execution, making AVS accessible via AI agents |
-
+| [Liveness](https://github.com/Othentic-Labs/liveness-avs-example) | An AVS that monitors operator **uptime and responsiveness** across the network. It introduces a **reputation system** and provides a mechanism for detecting and penalizing inactive operators. |
+| [Uniswap V4 Hook](https://github.com/Othentic-Labs/uniswap-v4-hook-avs-example) | Uses Uniswap V4 **hooks** to dynamically adjust swap fees based on real-time market data—solves inefficiencies of static fee models. |
+| [TLS AVS Example](https://github.com/Othentic-Labs/avs-tls-example) | An example showcasing an MPC-TLS-based AVS that validates TLS sessions and submits verifiable tasks to the AVS network.|
 
 ## Additional Examples
 The following examples are not official samples nor actively maintained, and some may be outdated.
@@ -108,11 +110,6 @@ Illustrates how machine learning models can be incorporated into Othentic’s AV
 [Access Control](https://github.com/Othentic-Labs/access-control-avs/)
 
 Focuses on decentralized access control using AVS. It provides examples of permission management within applications powered by Othentic Stack.
-
-[TLS AVS Example](https://github.com/Othentic-Labs/avs-tls-example) 
-
-An example demonstrating the use of **TLSNotary** to validate an MPC-TLS session and submit verifiable tasks to the AVS network.
-
 
 This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
 
