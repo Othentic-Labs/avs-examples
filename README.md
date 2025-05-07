@@ -18,7 +18,6 @@ A curated list of AVS implementations to help you get started with the [Othentic
 |------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | [Multi Chain AVS (TS)](https://github.com/Othentic-Labs/multi-l2-price-oracle-avs-example) | Deploys AVS across **[multiple L2 chains](https://docs.othentic.xyz/main/avs-framework/explainers/multi-l2s)**, showcasing task submission and attestation, in a multi-chain context. |
 | [PRNG](https://github.com/Othentic-Labs/PRNG-avs-example) | Showcases advanced CLI features like **[leader election](https://docs.othentic.xyz/main/avs-framework/othentic-consensus/leader-election)**, **[custom task triggers](https://docs.othentic.xyz/main/avs-framework/othentic-consensus/task-and-task-definitions#triggering-a-task)**, and **[hook execution](https://docs.othentic.xyz/main/avs-framework/smart-contracts/hooks/task-logic)**. Great for exploring full-stack AVS capabilities. |
-
 | [Leaderless Auction](https://github.com/Othentic-Labs/leaderless-auction-avs-example) | Implements a leaderless mechanism using an **auction-based protocol**. Instead of electing a leader, nodes participate in a commit-reveal scheme where they bid for task execution rights. |
 
 
