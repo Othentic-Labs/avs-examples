@@ -27,7 +27,7 @@ A curated list of AVS implementations to help you get started with the [Othentic
 | Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | [MCP AVS Example](https://github.com/Othentic-Labs/avs-mcp-example) | Demonstrates **Model Context Protocol (MCP)** support in AVSs. This example enables agent-compatible task execution, making AVS accessible via AI agents |
-| [TLS AVS Example](https://github.com/Othentic-Labs/avs-tls-example) | An example demonstrating the use of **TLSNotary** to validate an MPC-TLS session and submit verifiable tasks to the AVS network.|
+
 
 ## Additional Examples
 The following examples are not official samples nor actively maintained, and some may be outdated.
@@ -109,7 +109,10 @@ Illustrates how machine learning models can be incorporated into Othentic’s AV
 
 Focuses on decentralized access control using AVS. It provides examples of permission management within applications powered by Othentic Stack.
 
----
+[TLS AVS Example](https://github.com/Othentic-Labs/avs-tls-example) 
+
+An example demonstrating the use of **TLSNotary** to validate an MPC-TLS session and submit verifiable tasks to the AVS network.
+
 
 This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
 
