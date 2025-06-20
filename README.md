@@ -96,20 +96,3 @@ This example showcases how to utilize **EigenDA** for storing proof-of-task data
 
 Demonstrates how to implement a decentralized DNS registry using AVS. It focuses on integrating domain management functionality with Othentic Stack.
 
-
-[Lumina Intent](https://github.com/Othentic-Labs/lumina-intent-avs/)
-
-An example of intent-based transaction management using Lumina and AVS. It highlights how to handle user intents within decentralized systems.
-
-
-[AVS-ML](https://github.com/Othentic-Labs/avs-ml/)
-
-Illustrates how machine learning models can be incorporated into Othentic’s AVS framework. This repo is ideal for developers looking to blend ML and decentralized solutions.
-
-
-[Access Control](https://github.com/Othentic-Labs/access-control-avs/)
-
-Focuses on decentralized access control using AVS. It provides examples of permission management within applications powered by Othentic Stack.
-
-This `avs-examples/` directory is a work in progress, and the list of examples is continually growing. If you have an idea for a new example that isn't listed yet, feel free to start a discussion thread to propose it.
-
